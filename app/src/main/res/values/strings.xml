@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">PLantMaster</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="title_profile">Profile</string>
+    <string name="login_message">
+    If you want to see your history, you must log in or <font color="purple_500">Sign up</font>.
+</string>
+</resources>

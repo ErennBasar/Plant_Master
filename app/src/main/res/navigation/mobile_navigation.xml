@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_profile">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.erenbasar.plantmaster.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/navigation_dashboard"
+        android:name="com.erenbasar.plantmaster.ui.dashboard.DashboardFragment"
+        android:label="@string/title_dashboard"
+        tools:layout="@layout/fragment_dashboard" />
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.erenbasar.plantmaster.ui.profile.ProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile" />
+
+    <fragment
+        android:id="@+id/profileDetailFragment"
+        android:name="com.erenbasar.plantmaster.ui.profile.ProfileDetailFragment"
+        android:label="Profile Detail"
+        tools:layout="@layout/fragment_profile_detail" />
+
+    <fragment
+        android:id="@+id/SignupFragment"
+        android:name="com.erenbasar.plantmaster.ui.profile.ProfileSignUpFragment"
+        android:label="Sign Up"
+        tools:layout="@layout/fragment_profile_signup" />
+
+
+    <fragment
+        android:id="@+id/navigation_camera"
+        android:name="com.erenbasar.plantmaster.ui.camera.CameraFragment"
+        android:label="Camera"
+        app:destination="@id/navigation_camera" />
+</navigation>
