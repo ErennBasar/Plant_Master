@@ -7,56 +7,69 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment">
 
-    <!-- Email EditText -->
+    <!-- Username Field -->
     <EditText
-        android:id="@+id/emailInput"
-        android:layout_width="264dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="136dp"
-        android:ems="10"
-        android:hint="Email"
-        android:inputType="textEmailAddress"
+        android:id="@+id/usernameInput"
+        android:layout_width="260dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="80dp"
+        android:hint="Username"
+        android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Phone Number EditText - 2nd in order -->
+    <!-- Email Field -->
+    <EditText
+        android:id="@+id/emailInput"
+        android:layout_width="260dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="@+id/usernameInput"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/usernameInput"
+        app:layout_constraintTop_toBottomOf="@+id/usernameInput" />
+
     <EditText
         android:id="@+id/PhoneNumber"
-        android:layout_width="261dp"
+        android:layout_width="260dp"
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="Phone Number"
         android:inputType="phone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/emailInput"
+        app:layout_constraintStart_toStartOf="@+id/emailInput"
         app:layout_constraintTop_toBottomOf="@+id/emailInput" />
 
-    <!-- Password EditText - 3rd in order -->
+    <!-- Password Field -->
     <EditText
         android:id="@+id/passwordInput"
-        android:layout_width="261dp"
+        android:layout_width="260dp"
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/PhoneNumber"
+        app:layout_constraintStart_toStartOf="@+id/PhoneNumber"
         app:layout_constraintTop_toBottomOf="@+id/PhoneNumber" />
 
-    <!-- Password Again EditText - 4th in order (Last one) -->
+    <!-- Confirm Password Field -->
     <EditText
         android:id="@+id/passwordInputAgain"
-        android:layout_width="261dp"
+        android:layout_width="260dp"
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="Password Again"
         android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/passwordInput"
+        app:layout_constraintStart_toStartOf="@+id/passwordInput"
         app:layout_constraintTop_toBottomOf="@+id/passwordInput" />
 
     <!-- Submit Button -->
@@ -66,8 +79,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="Submit"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/passwordInputAgain"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="@+id/passwordInputAgain"
         app:layout_constraintTop_toBottomOf="@+id/passwordInputAgain" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
