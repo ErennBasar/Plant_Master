@@ -23,14 +23,15 @@ public class ProfileDetailFragment extends Fragment {
         binding = FragmentProfileDetailBinding.inflate(inflater, container, false);
 
         // Kullanıcı bilgilerini Firebase üzerinden al ve göster
-        // setupUserDetails();
+
         // Firebase kullanıcısını al
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         if (mAuth.getCurrentUser() != null) {
             binding.textProfileName.setText(mAuth.getCurrentUser().getDisplayName() != null
-                    ? mAuth.getCurrentUser().getDisplayName() : "No Display Name");
+                    ? mAuth.getCurrentUser().getDisplayName() : "No Display Name"); // DisplayName boşsa varsayılan bir mesaj göster
             binding.textEmail.setText(mAuth.getCurrentUser().getEmail());
         } else {
+            // Kullanıcı oturum açmamışsa varsayılan mesajlar göster
             binding.textProfileName.setText("Guest User");
             binding.textEmail.setText("No email");
         }
