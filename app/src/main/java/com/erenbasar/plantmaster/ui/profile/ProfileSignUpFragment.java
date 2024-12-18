@@ -13,10 +13,11 @@ import androidx.fragment.app.Fragment;
 import com.erenbasar.plantmaster.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 
 public class ProfileSignUpFragment extends Fragment {
 
-    private EditText emailInput,passwordInput, passwordInputAgain;
+    private EditText usernameInput,emailInput,passwordInput, passwordInputAgain;
     private Button submitButton;
     private FirebaseAuth mAuth;
 
@@ -34,6 +35,7 @@ public class ProfileSignUpFragment extends Fragment {
         mAuth = FirebaseAuth.getInstance();
 
         // Initialize UI components
+        usernameInput = rootView.findViewById(R.id.usernameInput);
         emailInput = rootView.findViewById(R.id.emailInput);
         passwordInput = rootView.findViewById(R.id.passwordInput);
         passwordInputAgain = rootView.findViewById(R.id.passwordInputAgain);
@@ -42,13 +44,14 @@ public class ProfileSignUpFragment extends Fragment {
 
         submitButton.setOnClickListener(v -> {
 
+            String username = usernameInput.getText().toString().trim();
             String email = emailInput.getText().toString().trim();
             String password = passwordInput.getText().toString();
             String passwordAgain = passwordInputAgain.getText().toString();
 
-            if (email.isEmpty() || password.isEmpty() || passwordAgain.isEmpty()) {
+            if (username.isEmpty() || email.isEmpty() || password.isEmpty() || passwordAgain.isEmpty()) {
 
-                Toast.makeText(getContext(), "Please fill in both password fields", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Please fill in all fields", Toast.LENGTH_SHORT).show();
             } else if (!password.equals(passwordAgain)) {
 
                 Toast.makeText(getContext(), "Passwords do not match", Toast.LENGTH_SHORT).show();
@@ -56,23 +59,38 @@ public class ProfileSignUpFragment extends Fragment {
                 Toast.makeText(getContext(), "Password must be at least 6 characters long", Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(getContext(), "Passwords match!", Toast.LENGTH_SHORT).show();
-                createUserWithEmail(email, password);
+                createUserWithEmail(username,email, password);
             }
 
         });
 
         return rootView;
     }
-    private void createUserWithEmail(String email,String password){
-        mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(task -> {
-            if(task.isSuccessful()){
-                FirebaseUser user = mAuth.getCurrentUser();
-                if (user != null) {
-                    Toast.makeText(getContext(), "User registered successfully: " + user.getEmail(), Toast.LENGTH_LONG).show();
-                }
-            }else {
-                Toast.makeText(getContext(), "Registration failed: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
-            }
-        });
+    private void createUserWithEmail(String username, String email, String password){
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+
+        mAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        FirebaseUser user = mAuth.getCurrentUser();
+                        if (user != null) {
+                            // Kullanıcının profilini güncelle
+                            UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                    .setDisplayName(username) // Display Name olarak kullanıcı adını ayarla
+                                    .build();
+
+                            user.updateProfile(profileUpdates)
+                                    .addOnCompleteListener(updateTask -> {
+                                        if (updateTask.isSuccessful()) {
+                                            Toast.makeText(getContext(), "User registered successfully", Toast.LENGTH_SHORT).show();
+                                        } else {
+                                            Toast.makeText(getContext(), "Failed to update profile", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                        }
+                    } else {
+                        Toast.makeText(getContext(), "Registration failed: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                });
     }
 }
