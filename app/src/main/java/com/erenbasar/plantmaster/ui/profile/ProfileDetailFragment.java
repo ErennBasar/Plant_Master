@@ -38,12 +38,6 @@ public class ProfileDetailFragment extends Fragment {
         return binding.getRoot();
 }
 
-//    private void setupUserDetails() {
-//        // Örnek olarak, kullanıcı bilgilerini buraya ekleyebilirsiniz
-//        binding.textProfileName.setText("User Name: Example");
-//        binding.textEmail.setText("Email: example@example.com");
-//    }
-
     @Override
     public void onDestroyView() {
         super.onDestroyView();
