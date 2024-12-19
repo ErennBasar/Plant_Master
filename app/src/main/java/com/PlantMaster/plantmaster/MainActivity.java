@@ -28,13 +28,29 @@ public class MainActivity extends AppCompatActivity {
         // Navigation View (BottomNavigationView) referansı
         BottomNavigationView navView = binding.navView;
 
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
+
+        // Destination değiştikçe menüyü göster veya gizle
+        navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
+            // navigation_profile veya SignupFragment dışında diğer fragment'lerde menüyü görünür yap
+            if (destination.getId() == R.id.navigation_profile || destination.getId() == R.id.SignupFragment) {
+                navView.setVisibility(View.GONE);
+                // AppCompatActivity'yi kullanarak ActionBar'ı gizle
+                ((AppCompatActivity) MainActivity.this).getSupportActionBar().hide();
+            } else {
+                navView.setVisibility(View.VISIBLE); // Diğerlerinde göster
+                // ActionBar'ı tekrar göster
+                ((AppCompatActivity) MainActivity.this).getSupportActionBar().show();
+            }
+        });
+
+
+
         // AppBar ve NavController'ı yapılandır
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.navigation_home, R.id.navigation_camera, R.id.navigation_profile)
                 .build();
 
-        // NavController elde et
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
 
         // ActionBar ve BottomNavigationView ile NavController'ı bağla
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);

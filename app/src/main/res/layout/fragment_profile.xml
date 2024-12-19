@@ -6,19 +6,30 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment">
 
+    <ImageView
+        android:id="@+id/profile_icon"
+        android:layout_width="181dp"
+        android:layout_height="79dp"
+        android:layout_marginTop="112dp"
+
+        android:src="@drawable/baseline_account_box_square"
+        app:layout_constraintEnd_toEndOf="@+id/emailInput"
+        app:layout_constraintHorizontal_bias="0.481"
+        app:layout_constraintStart_toStartOf="@+id/emailInput"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/emailInput"
         android:layout_width="264dp"
         android:layout_height="51dp"
-        android:layout_marginTop="136dp"
+        android:layout_marginTop="44dp"
         android:ems="10"
         android:hint="Email"
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/profile_icon" />
 
     <EditText
         android:id="@+id/passwordInput"
