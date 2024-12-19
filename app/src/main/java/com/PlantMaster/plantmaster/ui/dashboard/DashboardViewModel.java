@@ -1,4 +1,4 @@
-package com.erenbasar.plantmaster.ui.dashboard;
+package com.PlantMaster.plantmaster.ui.dashboard;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

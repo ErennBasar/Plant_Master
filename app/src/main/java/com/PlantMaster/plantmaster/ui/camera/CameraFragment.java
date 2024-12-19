@@ -1,4 +1,4 @@
-package com.erenbasar.plantmaster.ui.camera;
+package com.PlantMaster.plantmaster.ui.camera;
 
 import androidx.lifecycle.ViewModelProvider;
 
@@ -13,11 +13,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.erenbasar.plantmaster.R;
+import com.PlantMaster.plantmaster.R;
 
-import com.erenbasar.plantmaster.databinding.FragmentCameraBinding;
-import com.erenbasar.plantmaster.databinding.FragmentDashboardBinding;
-import com.erenbasar.plantmaster.ui.dashboard.DashboardViewModel;
+import com.PlantMaster.plantmaster.databinding.FragmentCameraBinding;
+import com.PlantMaster.plantmaster.databinding.FragmentDashboardBinding;
+import com.PlantMaster.plantmaster.ui.dashboard.DashboardViewModel;
 
 public class CameraFragment extends Fragment {
 

@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:85688080234:android:1ebc4e9bb6d1e9d6c2b713",
         "android_client_info": {
-          "package_name": "com.erenbasar.deneme"
+          "package_name": "com.PlantMaster.deneme"
         }
       },
       "oauth_client": [],
@@ -29,7 +29,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:85688080234:android:bf2605ff195d6fbcc2b713",
         "android_client_info": {
-          "package_name": "com.erenbasar.plantmaster"
+          "package_name": "com.PlantMaster.plantmaster"
         }
       },
       "oauth_client": [],

@@ -1,4 +1,4 @@
-package com.erenbasar.plantmaster.ui.profile;
+package com.PlantMaster.plantmaster.ui.profile;
 
 import android.os.Bundle;
 import android.text.Spannable;
@@ -21,8 +21,8 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
-import com.erenbasar.plantmaster.R;
-import com.erenbasar.plantmaster.databinding.FragmentProfileBinding;
+import com.PlantMaster.plantmaster.R;
+import com.PlantMaster.plantmaster.databinding.FragmentProfileBinding;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;

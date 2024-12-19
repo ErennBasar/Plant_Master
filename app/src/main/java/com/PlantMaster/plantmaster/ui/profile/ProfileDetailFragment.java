@@ -1,4 +1,4 @@
-package com.erenbasar.plantmaster.ui.profile;
+package com.PlantMaster.plantmaster.ui.profile;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,7 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import com.erenbasar.plantmaster.databinding.FragmentProfileDetailBinding;
+import com.PlantMaster.plantmaster.databinding.FragmentProfileDetailBinding;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class ProfileDetailFragment extends Fragment {

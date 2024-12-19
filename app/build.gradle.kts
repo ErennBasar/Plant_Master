@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.erenbasar.plantmaster"
+    namespace = "com.PlantMaster.plantmaster"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.erenbasar.plantmaster"
+        applicationId = "com.PlantMaster.plantmaster"
         minSdk = 23
         targetSdk = 34
         versionCode = 1

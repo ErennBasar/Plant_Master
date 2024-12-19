@@ -1,4 +1,4 @@
-package com.erenbasar.plantmaster;
+package com.PlantMaster.plantmaster;
 
 import org.junit.Test;
 

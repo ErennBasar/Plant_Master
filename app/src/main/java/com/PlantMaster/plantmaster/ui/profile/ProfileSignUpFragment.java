@@ -1,4 +1,4 @@
-package com.erenbasar.plantmaster.ui.profile;
+package com.PlantMaster.plantmaster.ui.profile;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
-import com.erenbasar.plantmaster.R;
+import com.PlantMaster.plantmaster.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
