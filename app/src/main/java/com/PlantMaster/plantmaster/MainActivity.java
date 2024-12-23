@@ -33,7 +33,8 @@ public class MainActivity extends AppCompatActivity {
         // Destination değiştikçe menüyü göster veya gizle
         navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
             // navigation_profile veya SignupFragment dışında diğer fragment'lerde menüyü görünür yap
-            if (destination.getId() == R.id.navigation_profile || destination.getId() == R.id.SignupFragment) {
+            if (destination.getId() == R.id.navigation_profile || destination.getId() == R.id.SignupFragment
+            ||destination.getId() == R.id.FirstFragment) {
                 navView.setVisibility(View.GONE);
                 // AppCompatActivity'yi kullanarak ActionBar'ı gizle
                 ((AppCompatActivity) MainActivity.this).getSupportActionBar().hide();

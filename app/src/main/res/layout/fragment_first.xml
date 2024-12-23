@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- Plant logo image, size reduced -->
+    <ImageView
+        android:id="@+id/myImageView"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/plant_logo"
+        android:background="@drawable/rounded_corner"
+        android:clipToOutline="true"
+        android:scaleType="centerCrop"
+        android:layout_marginTop="20dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/plantMasterText" />
+
+
+    <!-- Title Text: PlantMaster Explore Your Plant -->
+
+    <TextView
+        android:id="@+id/plantMasterText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/muli_black"
+        android:text="Plant Master"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@color/black"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/firstLoginButton"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/myImageView" />
+
+    <TextView
+        android:id="@+id/plantMasterExplore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:fontFamily="@font/muli"
+        android:text="Explore Your Plant"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/firstLoginButton"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/plantMasterText" />
+
+    <!-- Login Button (smaller size) -->
+    <Button
+        android:id="@+id/firstLoginButton"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:textSize="16sp"
+    android:layout_marginTop="50dp"
+    app:layout_constraintTop_toBottomOf="@id/plantMasterExplore"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toLeftOf="@id/firstsignupButton"
+    android:backgroundTint="#4CAF50"
+    android:textColor="#ffffff" />
+
+    <!-- Signup Button (smaller size) -->
+    <Button
+        android:id="@+id/firstsignupButton"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:text="SignUp"
+        android:textSize="16sp"
+    android:layout_marginTop="50dp"
+    app:layout_constraintTop_toBottomOf="@id/plantMasterExplore"
+    app:layout_constraintLeft_toRightOf="@id/firstLoginButton"
+    app:layout_constraintRight_toRightOf="parent"
+    android:backgroundTint="#4CAF50"
+    android:textColor="#ffffff" />
+
+    <!-- Continue as Guest Button -->
+    <Button
+        android:id="@+id/guestButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Continue as Guest"
+        android:textSize="14sp"
+        android:textColor="#000000"
+        android:layout_marginTop="25dp"
+        android:backgroundTint="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/firstLoginButton"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

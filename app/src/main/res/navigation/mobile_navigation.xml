@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_profile">
+    app:startDestination="@+id/FirstFragment">
 
     <fragment
         android:id="@+id/navigation_home"
@@ -34,6 +34,13 @@
         android:name="com.PlantMaster.plantmaster.ui.profile.ProfileSignUpFragment"
         android:label="Sign Up"
         tools:layout="@layout/fragment_profile_signup" />
+
+    <fragment
+        android:id="@+id/FirstFragment"
+        android:name="com.PlantMaster.plantmaster.ui.profile.FirstFragment"
+        android:label="Sign Up"
+        tools:layout="@layout/fragment_first">
+    </fragment>
 
 
     <fragment
