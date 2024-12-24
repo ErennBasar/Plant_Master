@@ -1,33 +1,13 @@
 {
   "project_info": {
-    "project_number": "85688080234",
-    "firebase_url": "https://login-7797a-default-rtdb.europe-west1.firebasedatabase.app",
-    "project_id": "login-7797a",
-    "storage_bucket": "login-7797a.appspot.com"
+    "project_number": "314041965818",
+    "project_id": "plantmaster-7e3b7",
+    "storage_bucket": "plantmaster-7e3b7.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:85688080234:android:1ebc4e9bb6d1e9d6c2b713",
-        "android_client_info": {
-          "package_name": "com.PlantMaster.deneme"
-        }
-      },
-      "oauth_client": [],
-      "api_key": [
-        {
-          "current_key": "AIzaSyAwA7COY2mZsjOY4P5VNqgOEdTZqRYSELM"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": []
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:85688080234:android:bf2605ff195d6fbcc2b713",
+        "mobilesdk_app_id": "1:314041965818:android:1144d599964f78d5197d43",
         "android_client_info": {
           "package_name": "com.PlantMaster.plantmaster"
         }
@@ -35,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAwA7COY2mZsjOY4P5VNqgOEdTZqRYSELM"
+          "current_key": "AIzaSyA7h962LkkwqLaESeJI5sIYULv8tZRcfIM"
         }
       ],
       "services": {
