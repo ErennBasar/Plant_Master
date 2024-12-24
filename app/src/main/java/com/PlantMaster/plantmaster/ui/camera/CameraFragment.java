@@ -1,5 +1,7 @@
 package com.PlantMaster.plantmaster.ui.camera;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.camera.core.Camera;
 import androidx.camera.core.CameraSelector;
 import androidx.camera.core.ImageCapture;
@@ -25,6 +27,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.PlantMaster.plantmaster.R;
 
@@ -70,24 +73,38 @@ public class CameraFragment extends Fragment {
 
         // kamera izinleri verilmis ise goruntuyu gosterir
         if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA)
-                != PackageManager.PERMISSION_GRANTED){
-            ActivityCompat.requestPermissions(requireActivity(),
-                    new String[]{Manifest.permission.CAMERA},
-                    100);
-        }else {
+                != PackageManager.PERMISSION_GRANTED) {
+            requestPermissionLauncher.launch(Manifest.permission.CAMERA);
+            if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA)
+                    == PackageManager.PERMISSION_GRANTED) {
+                startCamera();
+            }
+        } else {
             startCamera();
         }
-
         return root;
     }
+
+    // Yeni izin isteme için ActivityResultLauncher
+    private final ActivityResultLauncher<String> requestPermissionLauncher =
+            registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
+                if (isGranted) {
+                    // İzin verildiyse kamerayı başlat
+                    startCamera();
+                } else {
+                    // İzin verilmediyse kullanıcıyı uyar
+                    Toast.makeText(requireContext(), "Kamera izni gereklidir", Toast.LENGTH_SHORT).show();
+                }
+            });
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
     }
-    private void startCamera(){
-        cameraProviderFuture.addListener(()->{
+
+    private void startCamera() {
+        cameraProviderFuture.addListener(() -> {
             try {
                 // CamerProvider al
                 ProcessCameraProvider cameraProvider = cameraProviderFuture.get();
@@ -104,10 +121,10 @@ public class CameraFragment extends Fragment {
                 preview.setSurfaceProvider(previewView.getSurfaceProvider());
 
                 // Kamera ve Priview baglanti
-                Camera camera = cameraProvider.bindToLifecycle(this,cameraSelector,preview);
+                Camera camera = cameraProvider.bindToLifecycle(this, cameraSelector, preview);
 
-            }catch (Exception e) {
-                Log.e("CameraX","Kamera baslamadi",e);
+            } catch (Exception e) {
+                Log.e("CameraX", "Kamera baslamadi", e);
             }
         }, ContextCompat.getMainExecutor(requireContext()));
     }
