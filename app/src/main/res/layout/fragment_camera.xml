@@ -4,19 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#000000"
+    tools:context=".ui.camera.CameraFragment"
+    android:fitsSystemWindows="false">
 
-    tools:context=".ui.camera.CameraFragment">
-
-    <TextView
-        android:id="@+id/textCamera"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="302dp"
-        android:text="Camera Fragment"
-        android:textSize="24sp"
+    <androidx.camera.view.PreviewView
+        android:id="@+id/previewView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:tag="preview"
+        app:layout_constraintBottom_toTopOf="@id/cameraButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginBottom="25dp"/>
 
     <ImageButton
         android:id="@+id/cameraButton"
@@ -29,12 +30,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <androidx.camera.view.PreviewView
-        android:id="@+id/previewView"
-        android:tag="preview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

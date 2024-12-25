@@ -54,9 +54,6 @@ public class CameraFragment extends Fragment {
         binding = FragmentCameraBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textCamera;
-        cameraViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
-
         // cameraButton'a tıklama
         ImageButton cameraButton = binding.cameraButton;
         cameraButton.setOnClickListener(v -> {
