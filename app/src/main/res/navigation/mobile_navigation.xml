@@ -45,7 +45,7 @@
 
     <fragment
         android:id="@+id/navigation_camera"
-        android:name="com.PlantMaster.plantmaster.ui.camera.CameraFragment"
+        android:name="com.PlantMaster.plantmaster.ui.camera.cameraFragment.CameraFragment"
         android:label="Camera"
         app:destination="@id/navigation_camera" />
 </navigation>
