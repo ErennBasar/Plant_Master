@@ -1,8 +1,10 @@
 package com.PlantMaster.plantmaster.ui.camera.cameraFragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 
+import androidx.activity.result.ActivityResultLauncher;
 import androidx.camera.core.Camera;
 import androidx.camera.core.CameraSelector;
 import androidx.camera.core.Preview;
@@ -16,10 +18,16 @@ public class CameraHelper {
 
     private final android.content.Context context;
     private final LifecycleOwner lifecycleOwner;
+    ActivityResultLauncher<Intent> galleryActivityResultLauncher;
 
     public CameraHelper(Context context, LifecycleOwner lifecycleOwner) {
         this.context = context;
         this.lifecycleOwner = lifecycleOwner;
+    }
+    public CameraHelper(Context context, LifecycleOwner lifecycleOwner, ActivityResultLauncher<Intent> galleryActivityResultLauncher) {
+        this.context = context;
+        this.lifecycleOwner = lifecycleOwner;
+        this.galleryActivityResultLauncher = galleryActivityResultLauncher;
     }
 
     /**
@@ -76,6 +84,11 @@ public class CameraHelper {
                 Log.e("CameraHelper", "Kamera başlatılamadı", e);
             }
         }, ContextCompat.getMainExecutor(context));
+    }
+
+    public void openGallery() {
+        Intent galleryIntent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        galleryActivityResultLauncher.launch(galleryIntent);
     }
 
 }

@@ -3,6 +3,7 @@ package com.PlantMaster.plantmaster.ui.camera.cameraFragment;
 import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
@@ -55,5 +56,24 @@ public class PermissionHelper {
             Toast.makeText(context, "Kamera izni gereklidir", Toast.LENGTH_SHORT).show();
         }
     }
-
+    public void checkAndRequestGalleryPermission(Runnable startGalleryAction){
+        // Galeriye erişim izni kontrolü
+        if (ContextCompat.checkSelfPermission(context, Manifest.permission.READ_MEDIA_IMAGES)
+                != PackageManager.PERMISSION_GRANTED) {
+            Log.d("GalleryButton", "İzin verilmedi, izin isteniyor");
+            requestPermissionLauncher.launch(Manifest.permission.READ_MEDIA_IMAGES);
+        } else {
+            Log.d("GalleryButton", "İzin verildi, galeri açılıyor");
+            startGalleryAction.run();
+        }
+    }
+    public void handleGalleryPermissionResult(boolean isGranted, Runnable openGalleryAction) {
+        if (isGranted) {
+            // İzin verildiyse kamerayı başlat
+            openGalleryAction.run();
+        } else {
+            // İzin verilmediyse kullanıcıyı bilgilendir
+            //Toast.makeText(context, "Galeri izni gereklidir", Toast.LENGTH_SHORT).show();
+        }
+    }
 }
