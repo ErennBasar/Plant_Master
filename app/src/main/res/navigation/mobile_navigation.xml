@@ -36,6 +36,11 @@
         tools:layout="@layout/fragment_profile_signup" />
 
     <fragment
+        android:id="@+id/AfterCamera"
+        android:name="com.PlantMaster.plantmaster.ui.camera.cameraFragment.afterCameraFragment"
+        tools:layout="@layout/fragment_image_send" />
+
+    <fragment
         android:id="@+id/FirstFragment"
         android:name="com.PlantMaster.plantmaster.ui.profile.FirstFragment"
         android:label="Sign Up"
