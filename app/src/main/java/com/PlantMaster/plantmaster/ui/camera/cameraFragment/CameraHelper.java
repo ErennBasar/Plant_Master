@@ -85,7 +85,18 @@ public class CameraHelper {
             }
         }, ContextCompat.getMainExecutor(context));
     }
-
+    /**
+     * Galeri uygulamasını açar ve kullanıcıdan bir görüntü seçmesini ister.
+     * Seçilen görüntü, verilen `ActivityResultLauncher` üzerinden işlenir.
+     *
+     * Kullanım:
+     * 1. Bu metodu çağırmadan önce `galleryActivityResultLauncher`'ın uygun şekilde yapılandırıldığından emin olun.
+     * 2. Kullanıcı bir görüntü seçtikten sonra, sonuç `ActivityResultLauncher` ile alınabilir.
+     *
+     * Notlar:
+     * - Intent, galeri uygulamasını başlatmak için ACTION_PICK kullanır.
+     * - Android `MediaStore` API'sini kullanır.
+     */
     public void openGallery() {
         Intent galleryIntent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         galleryActivityResultLauncher.launch(galleryIntent);

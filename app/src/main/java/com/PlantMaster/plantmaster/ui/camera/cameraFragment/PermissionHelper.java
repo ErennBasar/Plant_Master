@@ -56,6 +56,12 @@ public class PermissionHelper {
             Toast.makeText(context, "Kamera izni gereklidir", Toast.LENGTH_SHORT).show();
         }
     }
+    /**
+     * Galeriye erişim iznini kontrol eder ve gerekiyorsa kullanıcıdan izin ister.
+     * İzin verilmişse belirtilen işlemi çalıştırır.
+     *
+     * @param startGalleryAction Galeriyi açma işlemini gerçekleştiren Runnable.
+     */
     public void checkAndRequestGalleryPermission(Runnable startGalleryAction){
         // Galeriye erişim izni kontrolü
         if (ContextCompat.checkSelfPermission(context, Manifest.permission.READ_MEDIA_IMAGES)
@@ -67,6 +73,13 @@ public class PermissionHelper {
             startGalleryAction.run();
         }
     }
+    /**
+     * Galeri izni sonucunu işler.
+     * İzin verilmişse galeriyi açar. İzin reddedilirse (şu an yorumlanmış), bir bilgilendirme yapılabilir.
+     *
+     * @param isGranted Galeri izninin verilip verilmediği.
+     * @param openGalleryAction Galeriyi açma işlemini gerçekleştiren Runnable.
+     */
     public void handleGalleryPermissionResult(boolean isGranted, Runnable openGalleryAction) {
         if (isGranted) {
             // İzin verildiyse kamerayı başlat

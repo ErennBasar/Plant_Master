@@ -33,12 +33,19 @@ public class CameraFragment extends Fragment {
     private PermissionHelper permissionGalleryHelper;
     private CameraHelper galleryHelper;
 
-    // Kamera izin isteme baslaticisi
+    /**
+     * Kamera izni isteme işlemini başlatan `ActivityResultLauncher`.
+     * Kamera izni sonuçlarını `PermissionHelper` ile işler.
+     */
     private final ActivityResultLauncher<String> requestPermissionLauncher =
             registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted ->{
                 // İzin sonucu PermissionHelper'a yönlendirilir
                 permissionCameraHelper.handleCameraPermissionResult(isGranted, () -> cameraHelper.startCamera(previewView));
             });
+    /**
+     * Galeriye erişim için bir Activity başlatan `ActivityResultLauncher`.
+     * Kullanıcı bir resim seçtiğinde, seçilen resim URI'sini işler.
+     */
     private final ActivityResultLauncher<Intent> galleryActivityResultLauncher =
             registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
                 if (result.getResultCode() == getActivity().RESULT_OK && result.getData() != null) {
@@ -47,6 +54,10 @@ public class CameraFragment extends Fragment {
                     Toast.makeText(requireContext(), "Resim seçildi: " + selectedImageUri, Toast.LENGTH_SHORT).show();
                 }
             });
+    /**
+     * Galeri erişim izni isteme işlemini başlatan `ActivityResultLauncher`.
+     * İzin sonucunu `PermissionHelper` ile işler ve gerekli durumda galeriyi açar.
+     */
     private final ActivityResultLauncher<String> requestGalleryPermissionLauncher =
             registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
                 permissionGalleryHelper.handleGalleryPermissionResult(isGranted,()->galleryHelper.openGallery());
