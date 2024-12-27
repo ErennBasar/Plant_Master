@@ -3,30 +3,36 @@ package com.PlantMaster.plantmaster.ui.camera.cameraFragment;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.camera.view.PreviewView;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
+import android.graphics.Bitmap;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.PlantMaster.plantmaster.R;
 import com.PlantMaster.plantmaster.databinding.FragmentCameraBinding;
 import com.PlantMaster.plantmaster.ui.camera.CameraViewModel;
 
 public class CameraFragment extends Fragment {
 
     private FragmentCameraBinding binding;
-
     private PreviewView previewView;
     private  CameraHelper cameraHelper;
     private PermissionHelper permissionCameraHelper;
@@ -76,6 +82,8 @@ public class CameraFragment extends Fragment {
         // Nesne tanimlamalari
         previewView = binding.previewView;
         ImageButton galleryButton = binding.galleryButton;
+        ImageButton cameraButton=binding.cameraButton;
+
 
         // Sinif nesnelerini tanimlama islemi
         cameraHelper = new CameraHelper(requireContext(),this);
@@ -92,8 +100,20 @@ public class CameraFragment extends Fragment {
             permissionGalleryHelper.checkAndRequestGalleryPermission(() -> galleryHelper.openGallery());
         });
 
+        cameraButton.setOnClickListener(v -> {
+            // Burada yeni bir CameraHelper oluşturmak yerine, zaten oluşturduğun cameraHelper'ı kullanın
+            cameraHelper.takePhoto(filePath -> {
+                // Fotoğraf dosya yolunu AfterCameraFragment'a geçmek için Bundle oluştur
+                Bundle bundle = new Bundle();
+                bundle.putString("imagePath", filePath);
+                NavController navController = Navigation.findNavController(v);
+                navController.navigate(R.id.AfterCamera, bundle);
+            });
+        });
+
         return root;
     }
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();

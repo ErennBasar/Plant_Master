@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         // Destination değiştikçe menüyü göster veya gizle
         navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
 
-            if (destination.getId() == R.id.navigation_profile || destination.getId() == R.id.SignupFragment
+            if (destination.getId() == R.id.AfterCamera || destination.getId() == R.id.SignupFragment
                     || destination.getId() == R.id.FirstFragment)
             {
                 navView.setVisibility(View.GONE);

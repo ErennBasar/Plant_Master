@@ -37,7 +37,7 @@
 
     <fragment
         android:id="@+id/AfterCamera"
-        android:name="com.PlantMaster.plantmaster.ui.camera.cameraFragment.afterCameraFragment"
+        android:name="com.PlantMaster.plantmaster.ui.camera.cameraFragment.AfterCameraFragment"
         tools:layout="@layout/fragment_image_send" />
 
     <fragment
