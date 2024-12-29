@@ -9,6 +9,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+
+import com.PlantMaster.plantmaster.R;
 import com.PlantMaster.plantmaster.databinding.FragmentProfileDetailBinding;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -21,6 +25,7 @@ public class ProfileDetailFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         // ViewBinding kullanarak layout'u bağla
         binding = FragmentProfileDetailBinding.inflate(inflater, container, false);
+        binding.profileEditButton.setOnClickListener(this::profileEditButtonClicked);
 
         // Kullanıcı bilgilerini Firebase üzerinden al ve göster
 
@@ -37,7 +42,13 @@ public class ProfileDetailFragment extends Fragment {
         }
 
         return binding.getRoot();
-}
+    }
+
+    private void profileEditButtonClicked(View view) {
+        NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_activity_main);
+        navController.navigate(R.id.action_profileDetailFragment_to_profileEditFragment);
+    }
+
 
     @Override
     public void onDestroyView() {

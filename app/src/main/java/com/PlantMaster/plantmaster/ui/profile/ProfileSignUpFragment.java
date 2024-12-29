@@ -9,6 +9,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import com.PlantMaster.plantmaster.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -17,7 +20,7 @@ import com.google.firebase.auth.UserProfileChangeRequest;
 
 public class ProfileSignUpFragment extends Fragment {
 
-    private EditText usernameInput,emailInput,passwordInput, passwordInputAgain;
+    private EditText usernameInput, emailInput, passwordInput, passwordInputAgain;
     private Button submitButton;
     private FirebaseAuth mAuth;
 
@@ -59,14 +62,16 @@ public class ProfileSignUpFragment extends Fragment {
                 Toast.makeText(getContext(), "Password must be at least 6 characters long", Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(getContext(), "Passwords match!", Toast.LENGTH_SHORT).show();
-                createUserWithEmail(username,email, password);
+                createUserWithEmail(username, email, password);
+
             }
 
         });
 
         return rootView;
     }
-    private void createUserWithEmail(String username, String email, String password){
+
+    private void createUserWithEmail(String username, String email, String password) {
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
         mAuth.createUserWithEmailAndPassword(email, password)
@@ -83,6 +88,9 @@ public class ProfileSignUpFragment extends Fragment {
                                     .addOnCompleteListener(updateTask -> {
                                         if (updateTask.isSuccessful()) {
                                             Toast.makeText(getContext(), "User registered successfully", Toast.LENGTH_SHORT).show();
+                                            // Başarılı kayıt işleminden sonra LoginFragment'e yönlendir
+                                            NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_activity_main);
+                                            navController.navigate(R.id.action_signupFragment_to_loginFragment);
                                         } else {
                                             Toast.makeText(getContext(), "Failed to update profile", Toast.LENGTH_SHORT).show();
                                         }

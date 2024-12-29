@@ -39,13 +39,25 @@
         android:id="@+id/FirstFragment"
         android:name="com.PlantMaster.plantmaster.ui.profile.FirstFragment"
         android:label="Sign Up"
-        tools:layout="@layout/fragment_first">
-    </fragment>
-
+        tools:layout="@layout/fragment_first"></fragment>
 
     <fragment
         android:id="@+id/navigation_camera"
         android:name="com.PlantMaster.plantmaster.ui.camera.CameraFragment"
         android:label="Camera"
         app:destination="@id/navigation_camera" />
+
+    <fragment
+        android:id="@+id/ProfileEditFragment"
+        android:name="com.PlantMaster.plantmaster.ui.profile.ProfileEditFragment"
+        android:label="Profile Edit"
+        tools:layout="@layout/fragment_profile_edit" />
+
+    <action
+        android:id="@+id/action_signupFragment_to_loginFragment"
+        app:destination="@id/navigation_profile" />
+
+    <action
+        android:id="@+id/action_profileDetailFragment_to_profileEditFragment"
+        app:destination="@id/ProfileEditFragment" />
 </navigation>
