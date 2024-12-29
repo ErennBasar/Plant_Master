@@ -36,6 +36,11 @@
         tools:layout="@layout/fragment_profile_signup" />
 
     <fragment
+        android:id="@+id/AfterCamera"
+        android:name="com.PlantMaster.plantmaster.ui.camera.cameraFragment.AfterCameraFragment"
+        tools:layout="@layout/fragment_image_send" />
+
+    <fragment
         android:id="@+id/FirstFragment"
         android:name="com.PlantMaster.plantmaster.ui.profile.FirstFragment"
         android:label="Sign Up"
@@ -43,7 +48,7 @@
 
     <fragment
         android:id="@+id/navigation_camera"
-        android:name="com.PlantMaster.plantmaster.ui.camera.CameraFragment"
+        android:name="com.PlantMaster.plantmaster.ui.camera.cameraFragment.CameraFragment"
         android:label="Camera"
         app:destination="@id/navigation_camera" />
 
