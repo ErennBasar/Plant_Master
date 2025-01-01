@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/FirstFragment">
+    app:startDestination="@+id/ImagePickerFragment">
 
     <fragment
         android:id="@+id/navigation_home"
@@ -57,6 +57,12 @@
         android:name="com.PlantMaster.plantmaster.ui.profile.ProfileEditFragment"
         android:label="Profile Edit"
         tools:layout="@layout/fragment_profile_edit" />
+
+    <fragment
+        android:id="@+id/ImagePickerFragment"
+        android:name="com.PlantMaster.plantmaster.ui.ImagePickerFragment.ImagePickerFragment"
+        android:label="Image Picker Fragment"
+        tools:layout="@layout/fragment_image_picker"/>
 
     <action
         android:id="@+id/action_signupFragment_to_loginFragment"

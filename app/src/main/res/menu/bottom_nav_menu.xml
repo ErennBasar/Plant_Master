@@ -7,7 +7,7 @@
         android:title="@string/title_home" />
 
     <item
-        android:id="@+id/navigation_camera"
+        android:id="@+id/ImagePickerFragment"
         android:icon="@drawable/baseline_photo_camera_24"
         android:title="Camera" />
 

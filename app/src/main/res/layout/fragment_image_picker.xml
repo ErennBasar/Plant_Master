@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F1F8E9"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Kamera Butonu ve Arka Plan Görseli -->
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kamera " />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="320dp"
+        android:layout_height="166dp"
+        android:background="#FFFFFF">
+
+        <!-- Kamera Arka Plan Resmi -->
+
+        <!-- Kamera Butonu -->
+
+        <ImageView
+            android:id="@+id/imgCameraBackground"
+            android:layout_width="140dp"
+            android:layout_height="160dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="6dp"
+            android:layout_marginBottom="3dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/plant_background_camera"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btnCameraOpen"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btnCameraOpen"
+            android:layout_width="161dp"
+            android:layout_height="166dp"
+            android:layout_marginEnd="12dp"
+            android:background="@android:color/transparent"
+            android:drawableStart="@drawable/baseline_photo_camera_24"
+            android:gravity="center_vertical|center_horizontal"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:text="Teşhis Et"
+            android:textColor="#608125"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/imgCameraBackground"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Galeri Butonu ve Arka Plan Görseli -->
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Galeri" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="320dp"
+        android:layout_height="166dp"
+        android:layout_marginTop="16dp"
+        android:background="#FFFFFF">
+
+        <!-- Galeri Arka Plan Resmi -->
+
+        <!-- Galeri Butonu -->
+
+        <ImageView
+            android:id="@+id/imgGalleryBackground"
+            android:layout_width="140dp"
+            android:layout_height="160dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="6dp"
+            android:layout_marginBottom="3dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/plant_background_galeri"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btnGalleryOpen"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btnGalleryOpen"
+            android:layout_width="161dp"
+            android:layout_height="166dp"
+            android:background="@android:color/transparent"
+            android:drawableStart="@drawable/ic_notifications_black_24dp"
+            android:gravity="center_vertical|center_horizontal"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:text="Teşhis Et"
+            android:textColor="#608125"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/imgGalleryBackground"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>
