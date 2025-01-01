@@ -61,6 +61,12 @@
 
     <!-- Galeri Butonu ve Arka Plan Görseli -->
 
+    <ImageView
+        android:id="@+id/imageViewDeneme"
+        android:layout_width="224dp"
+        android:layout_height="224dp"
+        tools:srcCompat="@tools:sample/avatars" />
+
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
@@ -108,6 +114,7 @@
             app:layout_constraintEnd_toStartOf="@+id/imgGalleryBackground"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>

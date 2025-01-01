@@ -1,10 +1,12 @@
 package com.PlantMaster.plantmaster.ui.ImagePickerFragment;
 
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -13,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.PlantMaster.plantmaster.R;
 import com.PlantMaster.plantmaster.databinding.FragmentImagePickerBinding;
 
 
@@ -56,9 +59,19 @@ public class ImagePickerFragment extends Fragment implements ImagePickerHelper.O
         return root;
     }
 
+    /**
+     * Kamerada cekilen resim ve galeriden secilen resim burda yakalaniyor
+     *
+     * @param imageUri: yakalanan resmin uri formatinda konumu
+     * */
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onImagePicked(Uri imageUri) {
-    imageView.setImageURI(imageUri);
+//    imageView.setImageURI(imageUri);
+        Base64Converter base64 = new Base64Converter();
+        String uriToBase64str = base64.uriToBase64(getContext(),imageUri);
+        binding.imageViewDeneme.setImageBitmap(Base64Converter.base64ToBitmap(uriToBase64str));
+
     }
     /**
      * Kamera izni isteme işlemini başlatan `ActivityResultLauncher`.
