@@ -6,6 +6,7 @@ import android.view.View;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -34,13 +35,19 @@ public class MainActivity extends AppCompatActivity {
         navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
 
             if (destination.getId() == R.id.AfterCamera || destination.getId() == R.id.SignupFragment
-                    || destination.getId() == R.id.FirstFragment)
-            {
+                    || destination.getId() == R.id.FirstFragment) {
                 navView.setVisibility(View.GONE);
                 getWindow().setBackgroundDrawableResource(android.R.color.white);
+
             } else if (destination.getId() == R.id.navigation_camera) {
                 navView.setVisibility(View.VISIBLE);
                 getWindow().setBackgroundDrawableResource(android.R.color.black);
+
+            } else if (destination.getId() == R.id.ImagePickerFragment) {
+                navView.setVisibility(View.VISIBLE);
+                getWindow().getDecorView().setBackgroundColor(
+                        ContextCompat.getColor(this, R.color.pastelGreen)
+                );
             } else {
                 navView.setVisibility(View.VISIBLE);
                 getWindow().setBackgroundDrawableResource(android.R.color.white);
@@ -50,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
         // AppBar ve NavController'ı yapılandır
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_home, R.id.navigation_camera, R.id.navigation_profile)
+                R.id.navigation_home, R.id.ImagePickerFragment, R.id.navigation_profile)
                 .build();
 
 

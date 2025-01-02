@@ -28,7 +28,7 @@ public class FirstFragment extends Fragment {
 
         firstLoginButton.setOnClickListener(v -> navigateToFragment(view, R.id.navigation_profile));
         signupButton.setOnClickListener(v -> navigateToFragment(view, R.id.SignupFragment));
-        guestButton.setOnClickListener(v -> navigateToFragment(view, R.id.navigation_camera));
+        guestButton.setOnClickListener(v -> navigateToFragment(view, R.id.ImagePickerFragment));
 
         return view;
     }
