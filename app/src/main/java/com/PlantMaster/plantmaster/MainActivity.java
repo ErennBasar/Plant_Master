@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
                 navView.setVisibility(View.VISIBLE);
                 getWindow().setBackgroundDrawableResource(android.R.color.black);
 
-            } else if (destination.getId() == R.id.ImagePickerFragment) {
+            } else if (destination.getId() == R.id.ImagePickerFragment || destination.getId() == R.id.navigation_home) {
                 navView.setVisibility(View.VISIBLE);
                 getWindow().getDecorView().setBackgroundColor(
                         ContextCompat.getColor(this, R.color.pastelGreen)

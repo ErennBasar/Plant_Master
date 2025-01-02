@@ -46,7 +46,7 @@ public class ProfileDetailFragment extends Fragment {
 
     private void profileEditButtonClicked(View view) {
         NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_activity_main);
-        navController.navigate(R.id.action_profileDetailFragment_to_profileEditFragment);
+        navController.navigate(R.id.ProfileEditFragment);
     }
 
 

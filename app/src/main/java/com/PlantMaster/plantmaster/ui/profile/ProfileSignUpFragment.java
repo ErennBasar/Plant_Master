@@ -90,7 +90,7 @@ public class ProfileSignUpFragment extends Fragment {
                                             Toast.makeText(getContext(), "User registered successfully", Toast.LENGTH_SHORT).show();
                                             // Başarılı kayıt işleminden sonra LoginFragment'e yönlendir
                                             NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_activity_main);
-                                            navController.navigate(R.id.action_signupFragment_to_loginFragment);
+                                            navController.navigate(R.id.navigation_profile);
                                         } else {
                                             Toast.makeText(getContext(), "Failed to update profile", Toast.LENGTH_SHORT).show();
                                         }

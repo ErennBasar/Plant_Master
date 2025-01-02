@@ -63,12 +63,5 @@
         android:name="com.PlantMaster.plantmaster.ui.ImagePickerFragment.ImagePickerFragment"
         android:label="Image Picker Fragment"
         tools:layout="@layout/fragment_image_picker"/>
-
-    <action
-        android:id="@+id/action_signupFragment_to_loginFragment"
-        app:destination="@id/navigation_profile" />
-
-    <action
-        android:id="@+id/action_profileDetailFragment_to_profileEditFragment"
-        app:destination="@id/ProfileEditFragment" />
+    
 </navigation>

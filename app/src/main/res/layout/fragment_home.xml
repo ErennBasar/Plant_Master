@@ -1,25 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.HomeFragment">
+    android:background="#F1F8E9"
+    android:gravity="top|center_horizontal"
+    android:orientation="vertical"
+    android:padding="16dp">
 
-    <TextView
-        android:id="@+id/text_home"
-        android:layout_width="232dp"
-        android:layout_height="36dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.396" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="320dp"
+        android:layout_height="100dp"
+        android:background="@drawable/rounded_corner_gray"
+        android:layout_marginTop="32dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <!-- Sol taraftaki ImageView -->
+        <ImageView
+            android:id="@+id/imageViewHistory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/ic_launcher_foreground"
+            android:contentDescription="ImageView description" />
+
+        <!-- Sağ taraftaki ilk TextView -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/imageViewHistory"
+            app:layout_constraintTop_toTopOf="@id/imageViewHistory"
+            android:layout_marginStart="8dp"
+            android:text="Burası bitki adı"
+            android:textSize="16sp"
+            android:textColor="#000000"
+            android:id="@+id/textViewPlant" />
+
+        <!-- Sağ tarafta, alttaki ikinci TextView -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/textViewPlant"
+            app:layout_constraintTop_toBottomOf="@id/textViewPlant"
+            android:layout_marginTop="8dp"
+            android:text="Burası Hastalık adı"
+            android:textSize="14sp"
+            android:textColor="#000000"
+            android:id="@+id/textViewDisease" />
+
+        <!-- Sağ tarafta, alttaki tarih TextView -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/textViewDisease"
+            app:layout_constraintTop_toBottomOf="@id/textViewDisease"
+            android:layout_marginTop="8dp"
+            android:text="Tarih: 02.01.2025"
+            android:textSize="12sp"
+            android:textColor="#000000"
+            android:id="@+id/textViewDate" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>
