@@ -53,6 +53,12 @@
         app:destination="@id/navigation_camera" />
 
     <fragment
+        android:id="@+id/HistoryDetail"
+        android:name="com.PlantMaster.plantmaster.ui.home.HistoryDetailFragment"
+        android:label="History Detail"
+        tools:layout="@layout/fragment_history_detail" />
+
+    <fragment
         android:id="@+id/ProfileEditFragment"
         android:name="com.PlantMaster.plantmaster.ui.profile.ProfileEditFragment"
         android:label="Profile Edit"
@@ -63,5 +69,5 @@
         android:name="com.PlantMaster.plantmaster.ui.ImagePickerFragment.ImagePickerFragment"
         android:label="Image Picker Fragment"
         tools:layout="@layout/fragment_image_picker"/>
-    
+
 </navigation>

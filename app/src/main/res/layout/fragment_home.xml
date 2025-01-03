@@ -13,9 +13,12 @@
         android:layout_width="320dp"
         android:layout_height="100dp"
         android:background="@drawable/rounded_corner_gray"
-        android:layout_marginTop="32dp">
+        android:layout_marginTop="32dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:id="@+id/constraintLayoutHistory">
 
-        <!-- Sol taraftaki ImageView -->
+
         <ImageView
             android:id="@+id/imageViewHistory"
             android:layout_width="wrap_content"
@@ -25,38 +28,38 @@
             android:src="@drawable/ic_launcher_foreground"
             android:contentDescription="ImageView description" />
 
-        <!-- Sağ taraftaki ilk TextView -->
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toEndOf="@id/imageViewHistory"
             app:layout_constraintTop_toTopOf="@id/imageViewHistory"
             android:layout_marginStart="8dp"
-            android:text="Burası bitki adı"
+            android:text="Bitki Adı: Aloe Vera"
             android:textSize="16sp"
             android:textColor="#000000"
             android:id="@+id/textViewPlant" />
 
-        <!-- Sağ tarafta, alttaki ikinci TextView -->
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="@id/textViewPlant"
             app:layout_constraintTop_toBottomOf="@id/textViewPlant"
             android:layout_marginTop="8dp"
-            android:text="Burası Hastalık adı"
+            android:text="Hastalık: Yaprak Döken"
             android:textSize="14sp"
             android:textColor="#000000"
             android:id="@+id/textViewDisease" />
 
-        <!-- Sağ tarafta, alttaki tarih TextView -->
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="@id/textViewDisease"
             app:layout_constraintTop_toBottomOf="@id/textViewDisease"
             android:layout_marginTop="8dp"
-            android:text="Tarih: 02.01.2025"
+            android:text="Tarih: 03/01/2025"
             android:textSize="12sp"
             android:textColor="#000000"
             android:id="@+id/textViewDate" />
