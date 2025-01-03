@@ -8,6 +8,10 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,11 +21,12 @@ import android.widget.ImageView;
 
 import com.PlantMaster.plantmaster.R;
 import com.PlantMaster.plantmaster.databinding.FragmentImagePickerBinding;
+import com.PlantMaster.plantmaster.ui.home.HomeFragment;
 
 
 public class ImagePickerFragment extends Fragment implements ImagePickerHelper.OnImagePickedListener{
 
-    private ImageView imageView;
+    private SharedViewModel sharedViewModel;
     private FragmentImagePickerBinding binding;
     private ImagePickerHelper cameraHelper;
     private ImagePickerHelper galeriHelper;
@@ -56,6 +61,9 @@ public class ImagePickerFragment extends Fragment implements ImagePickerHelper.O
         btnCameraOpen.setOnClickListener(v -> {runtimeCameraPermission.checkAndRequestCameraPermission(()->cameraHelper.openCamera());});
         btnGalleryOpen.setOnClickListener(v -> {runtimeGalleryPermission.checkAndRequestGalleryPermission(()->galeriHelper.openGallery());});
 
+        // ViewModel'i Activity ile paylaşarak alıyoruz
+        sharedViewModel = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
+
         return root;
     }
 
@@ -72,6 +80,7 @@ public class ImagePickerFragment extends Fragment implements ImagePickerHelper.O
         String uriToBase64str = base64.uriToBase64(getContext(),imageUri);
         binding.imageViewDeneme.setImageBitmap(Base64Converter.base64ToBitmap(uriToBase64str));
 
+        sharedViewModel.setImageUri(imageUri);
     }
     /**
      * Kamera izni isteme işlemini başlatan `ActivityResultLauncher`.
