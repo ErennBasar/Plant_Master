@@ -32,10 +32,13 @@ public class ProfileDetailFragment extends Fragment {
         // Firebase kullanıcısını al
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         if (mAuth.getCurrentUser() != null) {
-            binding.textProfileName.setText(mAuth.getCurrentUser().getDisplayName() != null
-                    ? mAuth.getCurrentUser().getDisplayName() : "No Display Name"); // DisplayName boşsa varsayılan bir mesaj göster
+            String displayName = mAuth.getCurrentUser().getDisplayName() != null
+                    ? mAuth.getCurrentUser().getDisplayName()
+                    : "No Display Name";
+            binding.textProfileName.setText("Welcome " + displayName); // DisplayName boşsa varsayılan bir mesaj göster
             binding.textEmail.setText(mAuth.getCurrentUser().getEmail());
-        } else {
+        }
+        else {
             // Kullanıcı oturum açmamışsa varsayılan mesajlar göster
             binding.textProfileName.setText("Guest User");
             binding.textEmail.setText("No email");
