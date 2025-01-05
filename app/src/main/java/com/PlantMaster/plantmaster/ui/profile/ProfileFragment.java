@@ -70,7 +70,7 @@ public class ProfileFragment extends Fragment {
         }, signUpStart, signUpEnd, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
 
-        spannableString.setSpan(new ForegroundColorSpan(ContextCompat.getColor(requireContext(), R.color.purple_500)),
+        spannableString.setSpan(new ForegroundColorSpan(ContextCompat.getColor(requireContext(), R.color.green_500)),
                 signUpStart, signUpEnd, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
 

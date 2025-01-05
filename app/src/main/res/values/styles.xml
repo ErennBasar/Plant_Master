@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="CustomTextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxBackgroundColor">#FFFFFF</item> <!-- Arka plan rengi -->
+        <item name="boxStrokeColor">#CCCCCC</item> <!-- Kenar çizgi rengi -->
+        <item name="hintTextColor">#AAAAAA</item> <!-- İpucu metin rengi -->
+    </style>
+
+</resources>
