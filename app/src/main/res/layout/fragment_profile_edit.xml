@@ -1,102 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.profile.ProfileEditFragment">
+    android:orientation="vertical"
+    tools:context=".ui.profile.profileEdit.ProfileEditFragment">
 
-    <EditText
-        android:id="@+id/currentEmailAddress"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:ems="10"
-        android:hint="Current Email"
-        android:inputType="textEmailAddress"
-        app:layout_constraintEnd_toEndOf="@+id/editTextPhone"
-        app:layout_constraintStart_toStartOf="@+id/editTextPhone"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPhone" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp">
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/changeUsername"
+        android:layout_width="390dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/gradient_btn"
+        android:textColor="@color/white"
+        android:textSize="14dp"
+        android:text="Change Username" />
 
-    <Button
-        android:id="@+id/editSummitButton"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_marginTop="24dp"
-        android:text="Summit"
-        app:layout_constraintEnd_toEndOf="@+id/editPasswordConfirm"
-        app:layout_constraintStart_toStartOf="@+id/editPasswordConfirm"
-        app:layout_constraintTop_toBottomOf="@+id/editPasswordConfirm" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/changeEmail"
+        android:layout_width="390dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/gradient_btn"
+        android:textColor="@color/white"
+        android:textSize="14dp"
+        android:text="Change\nEMail" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/changePassword"
+        android:layout_width="390dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@drawable/gradient_btn"
+        android:textColor="@color/white"
+        android:textSize="14dp"
+        android:text="Change Password" />
 
-    <EditText
-        android:id="@+id/editEmailAddress"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:ems="10"
-        android:hint="New Email"
-        android:inputType="textEmailAddress"
-        app:layout_constraintEnd_toEndOf="@+id/currentEmailAddress"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/currentEmailAddress"
-        app:layout_constraintTop_toBottomOf="@+id/currentEmailAddress" />
+    </LinearLayout>
+    <FrameLayout
+        android:id="@+id/container_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
 
-    <EditText
-        android:id="@+id/editPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:hint="New Password"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="@+id/currentPassword"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/currentPassword"
-        app:layout_constraintTop_toBottomOf="@+id/currentPassword" />
-
-    <EditText
-        android:id="@+id/currentPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:hint="Current Password"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="@+id/editEmailAddress"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/editEmailAddress"
-        app:layout_constraintTop_toBottomOf="@+id/editEmailAddress" />
-
-    <EditText
-        android:id="@+id/editPasswordConfirm"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_marginTop="4dp"
-        android:ems="10"
-        android:hint="New Password Again"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="@+id/editPassword"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/editPassword"
-        app:layout_constraintTop_toBottomOf="@+id/editPassword" />
-
-    <EditText
-        android:id="@+id/editTextPhone"
-        android:layout_width="210dp"
-        android:layout_height="50dp"
-        android:ems="10"
-        android:hint="New Phone"
-        android:inputType="phone"
-        app:layout_constraintEnd_toEndOf="@+id/editUsername"
-        app:layout_constraintStart_toStartOf="@+id/editUsername"
-        app:layout_constraintTop_toBottomOf="@+id/editUsername" />
-
-    <EditText
-        android:id="@+id/editUsername"
-        android:layout_width="210dp"
-        android:layout_height="49dp"
-        android:ems="10"
-        android:hint="Username"
-        android:inputType="text"
-        tools:layout_editor_absoluteX="100dp"
-        tools:layout_editor_absoluteY="177dp" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

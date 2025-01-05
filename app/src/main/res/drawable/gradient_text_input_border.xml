@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Gradient çerçeve -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:startColor="#13cdcd"
+            android:endColor="#4CAF50"
+            android:angle="45" />
+            <corners android:radius="16dp" /> <!-- Köşe yuvarlaklığı -->
+        </shape>
+    </item>
+
+    <!-- İç beyaz arka plan -->
+    <item android:left="4dp" android:right="4dp" android:top="4dp" android:bottom="4dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#FFFFFF" /> <!-- Beyaz arka plan -->
+            <corners android:radius="14dp" /> <!-- İç köşe yuvarlaklığı -->
+        </shape>
+    </item>
+</layer-list>
