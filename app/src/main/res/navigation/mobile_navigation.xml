@@ -60,14 +60,22 @@
 
     <fragment
         android:id="@+id/ProfileEditFragment"
-        android:name="com.PlantMaster.plantmaster.ui.profile.ProfileEditFragment"
+        android:name="com.PlantMaster.plantmaster.ui.profile.profileEdit.ProfileEditFragment"
         android:label="Profile Edit"
-        tools:layout="@layout/fragment_profile_edit" />
+        tools:layout="@layout/fragment_profile_edit">
+    </fragment>
 
     <fragment
         android:id="@+id/ImagePickerFragment"
         android:name="com.PlantMaster.plantmaster.ui.ImagePickerFragment.ImagePickerFragment"
         android:label="Image Picker Fragment"
         tools:layout="@layout/fragment_image_picker"/>
+    <fragment
+        android:id="@+id/usernameChangeFragment"
+        android:name="com.PlantMaster.plantmaster.ui.profile.profileEdit.UsernameChangeFragment"
+        android:label="Edit Username"
+        tools:layout="@layout/fragment_username_change" />
+
+
 
 </navigation>
