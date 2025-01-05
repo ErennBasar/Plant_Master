@@ -1,5 +1,6 @@
-package com.PlantMaster.plantmaster.ui.home;
+package com.PlantMaster.plantmaster.ui.history;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,11 +48,15 @@ public class HistoryDetailFragment extends Fragment {
             textViewDate.setText(date);
         });
 
-        sharedViewModel.getImageUri().observe(getViewLifecycleOwner(), imageUri -> {
-            if (imageUri != null) {
-                imageViewHistory.setImageURI(imageUri);
+        Bundle bundle = getArguments();
+        if (bundle != null) {
+            String imageUriString = bundle.getString("imageUri");
+            if (imageUriString != null) {
+                Uri imageUri = Uri.parse(imageUriString);
+                imageViewHistory.setImageURI(imageUri); // ImageView'a set etme
             }
-        });
+        }
+
 
         return root;
     }

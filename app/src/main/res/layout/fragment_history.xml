@@ -7,7 +7,8 @@
     android:background="#F1F8E9"
     android:gravity="top|center_horizontal"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:id="@+id/HistoryLinearLayout">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="320dp"
@@ -16,6 +17,7 @@
         android:layout_marginTop="32dp"
         android:clickable="true"
         android:focusable="true"
+        android:visibility="gone"
         android:id="@+id/constraintLayoutHistory">
 
 

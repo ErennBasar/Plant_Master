@@ -1,14 +1,14 @@
-package com.PlantMaster.plantmaster.ui.home;
+package com.PlantMaster.plantmaster.ui.history;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class HomeViewModel extends ViewModel {
+public class HistoryViewModel extends ViewModel {
 
     private final MutableLiveData<String> mText;
 
-    public HomeViewModel() {
+    public HistoryViewModel() {
         mText = new MutableLiveData<>();
         mText.setValue("This is home fragment");
     }
