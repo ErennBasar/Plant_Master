@@ -8,20 +8,14 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 
-import com.PlantMaster.plantmaster.R;
 import com.PlantMaster.plantmaster.databinding.FragmentImagePickerBinding;
-import com.PlantMaster.plantmaster.ui.home.HomeFragment;
 
 
 public class ImagePickerFragment extends Fragment implements ImagePickerHelper.OnImagePickedListener{
