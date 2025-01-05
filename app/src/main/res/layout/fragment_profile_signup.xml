@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.HomeFragment">
+    tools:context=".ui.history.HistoryFragment">
 
     <!-- Username Field -->
-
-    <!-- Email Field -->
     <EditText
         android:id="@+id/usernameInput"
         android:layout_width="260dp"
         android:layout_height="50dp"
-        android:layout_marginTop="124dp"
+        android:layout_marginTop="40dp"
         android:background="@drawable/gradient_text_input_border"
         android:hint="Username"
         android:inputType="textPersonName"
@@ -22,17 +19,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
+    <!-- Email Field -->
     <EditText
         android:id="@+id/emailInput"
         android:layout_width="260dp"
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
+        android:background="@drawable/gradient_text_input_border"
         android:ems="10"
         android:hint="Email"
         android:inputType="textEmailAddress"
-        android:background="@drawable/gradient_text_input_border"
         android:paddingStart="16dp"
         app:layout_constraintEnd_toEndOf="@+id/usernameInput"
         app:layout_constraintHorizontal_bias="0.0"
@@ -44,10 +42,10 @@
         android:layout_width="260dp"
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
+        android:background="@drawable/gradient_text_input_border"
         android:ems="10"
         android:hint="Phone Number"
         android:inputType="phone"
-        android:background="@drawable/gradient_text_input_border"
         android:paddingStart="16dp"
         app:layout_constraintEnd_toEndOf="@+id/emailInput"
         app:layout_constraintStart_toStartOf="@+id/emailInput"
@@ -59,10 +57,10 @@
         android:layout_width="260dp"
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
+        android:background="@drawable/gradient_text_input_border"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
-        android:background="@drawable/gradient_text_input_border"
         android:paddingStart="16dp"
         app:layout_constraintEnd_toEndOf="@+id/PhoneNumber"
         app:layout_constraintStart_toStartOf="@+id/PhoneNumber"
@@ -74,10 +72,10 @@
         android:layout_width="260dp"
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
+        android:background="@drawable/gradient_text_input_border"
         android:ems="10"
         android:hint="Password Again"
         android:inputType="textPassword"
-        android:background="@drawable/gradient_text_input_border"
         android:paddingStart="16dp"
         app:layout_constraintEnd_toEndOf="@+id/passwordInput"
         app:layout_constraintStart_toStartOf="@+id/passwordInput"
@@ -90,11 +88,23 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:background="@drawable/gradient_btn"
+        android:backgroundTint="@null"
         android:text="Submit"
-        android:textColor="@color/white"
+        android:textColor="#ffffff"
         app:layout_constraintEnd_toEndOf="@+id/passwordInputAgain"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="@+id/passwordInputAgain"
         app:layout_constraintTop_toBottomOf="@+id/passwordInputAgain" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="110dp"
+        android:layout_height="91dp"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/plant_logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

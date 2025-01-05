@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.PlantMaster.plantmaster.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        android:name="com.PlantMaster.plantmaster.ui.history.HistoryFragment"
+        android:label="History"
+        tools:layout="@layout/fragment_history" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
@@ -54,7 +54,7 @@
 
     <fragment
         android:id="@+id/HistoryDetail"
-        android:name="com.PlantMaster.plantmaster.ui.home.HistoryDetailFragment"
+        android:name="com.PlantMaster.plantmaster.ui.history.HistoryDetailFragment"
         android:label="History Detail"
         tools:layout="@layout/fragment_history_detail" />
 

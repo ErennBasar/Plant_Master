@@ -4,15 +4,19 @@
     <item>
         <shape android:shape="rectangle">
             <gradient
-                android:startColor="#13cdcd"
-            android:endColor="#4CAF50"
-            android:angle="45" />
+                android:angle="45"
+                android:endColor="#4CAF50"
+                android:startColor="#13cdcd" />
             <corners android:radius="16dp" /> <!-- Köşe yuvarlaklığı -->
         </shape>
     </item>
 
     <!-- İç beyaz arka plan -->
-    <item android:left="4dp" android:right="4dp" android:top="4dp" android:bottom="4dp">
+    <item
+        android:bottom="4dp"
+        android:left="4dp"
+        android:right="4dp"
+        android:top="4dp">
         <shape android:shape="rectangle">
             <solid android:color="#FFFFFF" /> <!-- Beyaz arka plan -->
             <corners android:radius="14dp" /> <!-- İç köşe yuvarlaklığı -->
