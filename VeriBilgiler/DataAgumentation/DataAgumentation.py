@@ -3,7 +3,7 @@ from PIL import Image
 import imgaug.augmenters as iaa
 import numpy as np
 
-def augment_images_in_directory(directory_path, target_count=500):
+def augment_images_in_directory(directory_path, target_count):
     # Veri artırma işlemleri için bir imgaug augmenter seti oluşturuyoruz
     augmenter = iaa.Sequential([
         iaa.Fliplr(0.5),  # Görüntüyü yatay olarak çevirme
@@ -24,52 +24,70 @@ def augment_images_in_directory(directory_path, target_count=500):
         print(f"Dizin bulunamadı: {directory_path}")
         return
 
- 
     image_files = [f for f in os.listdir(directory_path) if f.lower().endswith(('png', 'jpg', 'jpeg'))]
 
     if not image_files:
-        print("Dizinde görüntü dosyası bulunamadı.")
+        print("Dizin içinde görüntü dosyası bulunamadı.")
         return
 
-    total_images = len(image_files)  
-    augmented_count = 0 
-    index = 1
+    total_images = len(image_files)
+    print(f"Başlangıçta {total_images} adet görüntü bulunuyor.")
 
- 
-    augmented_files = image_files.copy()  
+    if total_images >= target_count:
+        print(f"Target dosya sayısı {target_count} mevcut dosya sayısından ({total_images}) küçük. Veri artırmaya gerek yok.")
+        return
+
+    augmented_count = 0
+    index = 1
+    augmented_files = image_files.copy()
 
     while augmented_count + total_images < target_count:
-        for image_file in augmented_files: 
+        for image_file in augmented_files:
             image_path = os.path.join(directory_path, image_file)
             with Image.open(image_path) as img:
                 img = img.convert("RGB") 
 
-               
                 img_array = np.array(img)
 
-                
-                augmented_images = augmenter(images=[img_array] * 3)  
+                augmented_images = augmenter(images=[img_array] * 3)
 
                 for i, aug_img in enumerate(augmented_images):
                     aug_image = Image.fromarray(aug_img)
 
                     
-                    save_path = os.path.join(directory_path, f"{index}_aug_{i + 1}.jpg")
+                    safe_file_name = f"{index}_aug_{i + 1}.jpg"
+                    save_path = os.path.join(directory_path, safe_file_name)
+
+                   
+                    if len(save_path) > 255:
+                        print(f"Uyarı: Dosya yolu çok uzun, kısaltılıyor: {save_path}")
+                        save_path = save_path[:255]
+
                     aug_image.save(save_path)
                     print(f"Kaydedildi: {save_path}")
 
                     augmented_count += 1
-                    augmented_files.append(f"{index}_aug_{i + 1}.jpg")  
+                    augmented_files.append(safe_file_name)
 
                     if augmented_count + total_images >= target_count:
-                        break  
+                        break
 
                 index += 1
 
             if augmented_count + total_images >= target_count:
-                break  
+                break
 
     print(f"Toplamda {augmented_count + total_images} görüntü işlendi ve kaydedildi.")
 
-# Kullanım örneği
-augment_images_in_directory(r"C:\Users\Batuhan\Desktop\image", target_count=500)
+
+directory_input = input("Lütfen dizin yolunu girin: ")
+directory_input = directory_input.replace('"', '')
+
+target_count_input = input("Hedef görüntü sayısını girin: ")
+try:
+    target_count = int(target_count_input)
+except ValueError:
+    print("Hedef görüntü sayısı geçerli bir sayı olmalıdır.")
+    exit()
+
+augment_images_in_directory(directory_input, target_count)
