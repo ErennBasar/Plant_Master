@@ -75,6 +75,11 @@
         android:name="com.PlantMaster.plantmaster.ui.profile.profileEdit.UsernameChangeFragment"
         android:label="Edit Username"
         tools:layout="@layout/fragment_username_change" />
+    <fragment
+        android:id="@+id/ResetPasswordFragment"
+        android:name="com.PlantMaster.plantmaster.ui.profile.ResetPasswordFragment"
+        android:label="Reset Password"
+        tools:layout="@layout/fragment_reset_password" />
 
 
 

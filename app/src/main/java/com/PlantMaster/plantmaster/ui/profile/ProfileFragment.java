@@ -50,6 +50,7 @@ public class ProfileFragment extends Fragment {
 
         // Butonlara tıklama olayları bağlandı
         binding.loginButton.setOnClickListener(this::loginClicked);
+        binding.forgetPasswordText.setOnClickListener(this::forgetPasswordClicked);
 
 
         String fullText = getString(R.string.login_message);
@@ -84,6 +85,8 @@ public class ProfileFragment extends Fragment {
         return root;
     }
 
+
+
     public void loginClicked(View view) {
         String email = binding.emailInput.getText().toString();
         String password = binding.passwordInput.getText().toString();
@@ -114,6 +117,10 @@ public class ProfileFragment extends Fragment {
                     // Hata mesajını göster
                     Toast.makeText(getActivity(), e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
                 });
+    }
+    public void forgetPasswordClicked (View view){
+        NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_activity_main);
+        navController.navigate(R.id.ResetPasswordFragment);
     }
 
     // ProfileDetailFragment'e yönlendirme metodu
