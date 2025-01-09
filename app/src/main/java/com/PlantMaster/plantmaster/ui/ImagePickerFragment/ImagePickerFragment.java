@@ -7,6 +7,8 @@ import android.os.Bundle;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.RequiresApi;
+import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -43,8 +45,8 @@ public class ImagePickerFragment extends Fragment implements ImagePickerHelper.O
         binding = FragmentImagePickerBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        Button btnCameraOpen = binding.btnCameraOpen;
-        Button btnGalleryOpen = binding.btnGalleryOpen;
+        ConstraintLayout btnCameraOpen = binding.CLayoutBtnCameraOpen;
+        ConstraintLayout btnGalleryOpen = binding.CLayoutBtnGalleryOpen;
 
         runtimeCameraPermission = new RuntimePermissionHelper(requireContext(),requestPermissionLauncher);
         runtimeGalleryPermission = new RuntimePermissionHelper(requireContext(),requestGalleryPermissionLauncher);
@@ -53,6 +55,7 @@ public class ImagePickerFragment extends Fragment implements ImagePickerHelper.O
         galeriHelper = new ImagePickerHelper(requireContext(),this,this);
 
         btnCameraOpen.setOnClickListener(v -> {runtimeCameraPermission.checkAndRequestCameraPermission(()->cameraHelper.openCamera());});
+
         btnGalleryOpen.setOnClickListener(v -> {runtimeGalleryPermission.checkAndRequestGalleryPermission(()->galeriHelper.openGallery());});
 
         // ViewModel'i Activity ile paylaşarak alıyoruz
@@ -70,9 +73,10 @@ public class ImagePickerFragment extends Fragment implements ImagePickerHelper.O
     @Override
     public void onImagePicked(Uri imageUri) {
 //    imageView.setImageURI(imageUri);
-        Base64Converter base64 = new Base64Converter();
-        String uriToBase64str = base64.uriToBase64(getContext(),imageUri);
-        binding.imageViewDeneme.setImageBitmap(Base64Converter.base64ToBitmap(uriToBase64str));
+//        Base64Converter base64 = new Base64Converter();
+//        String uriToBase64str = base64.uriToBase64(getContext(),imageUri);
+//        binding.imageViewDeneme.setImageBitmap(Base64Converter.base64ToBitmap(uriToBase64str));
+
 
         sharedViewModel.setImageUri(imageUri);
     }
