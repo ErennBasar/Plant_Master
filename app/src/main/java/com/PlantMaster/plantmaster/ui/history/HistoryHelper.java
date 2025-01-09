@@ -3,11 +3,8 @@ package com.PlantMaster.plantmaster.ui.history;
 import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.graphics.Color;
-
-import android.os.Bundle;
-
-
 import android.net.Uri;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -15,29 +12,30 @@ import android.widget.TextView;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
+import androidx.lifecycle.LifecycleOwner;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-
 
 import com.PlantMaster.plantmaster.R;
 import com.PlantMaster.plantmaster.databinding.FragmentHistoryBinding;
 import com.PlantMaster.plantmaster.ui.ImagePickerFragment.SharedViewModel;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+
 import java.util.List;
-import java.util.Locale;
+
 
 public class HistoryHelper {
 
     private final Context context;
     private final FragmentHistoryBinding binding;
     private final SharedViewModel sharedViewModel;
+    private final LifecycleOwner lifecycleOwner;
 
-    public HistoryHelper(Context context, FragmentHistoryBinding binding, SharedViewModel sharedViewModel) {
+    public HistoryHelper(Context context, FragmentHistoryBinding binding, SharedViewModel sharedViewModel, LifecycleOwner lifecycleOwner) {
         this.context = context;
         this.binding = binding;
         this.sharedViewModel = sharedViewModel;
+        this.lifecycleOwner = lifecycleOwner;
     }
 
     public void updateUIWithImages(List<Uri> uriList) {
@@ -66,109 +64,114 @@ public class HistoryHelper {
     }
 
     private void addNewConstraintLayout(LinearLayout mainLayout, Uri imageUri) {
+        ConstraintLayout newConstraintLayout = new ConstraintLayout(context);
         ConstraintLayout originalLayout = binding.constraintLayoutHistory;
 
-        ConstraintLayout newConstraintLayout = new ConstraintLayout(context);
         newConstraintLayout.setLayoutParams(originalLayout.getLayoutParams());
         newConstraintLayout.setBackground(originalLayout.getBackground());
         newConstraintLayout.setClickable(true);
         newConstraintLayout.setFocusable(true);
 
-        // Dinamik olarak ImageView oluşturuluyor
-        ImageView imageView = new ImageView(context);
-        imageView.setId(View.generateViewId());
-        imageView.setLayoutParams(binding.imageViewHistory.getLayoutParams());
-        imageView.setImageURI(imageUri);
-        imageView.setTag(imageUri);  // URI'yi tag olarak ayarlıyoruz
+
+        ImageView imageView = createImageView(imageUri);
         newConstraintLayout.addView(imageView);
 
-        Uri retrievedImageUri = (Uri) imageView.getTag();
-
-        // TextView'ları ekleme (Plant, Disease, Date)
-        TextView textViewPlant = new TextView(context);
-        textViewPlant.setId(View.generateViewId());
-        textViewPlant.setLayoutParams((ConstraintLayout.LayoutParams) binding.textViewPlant.getLayoutParams());
-        textViewPlant.setText("Bitki Adı: " + "Patates");
-        textViewPlant.setTextSize(16);
-        textViewPlant.setTextColor(Color.BLACK);
-        textViewPlant.setAlpha(0f);
+        TextView textViewPlant = createTextView("", 16, Color.BLACK, 0f);
         newConstraintLayout.addView(textViewPlant);
 
-        TextView textViewDisease = new TextView(context);
-        textViewDisease.setId(View.generateViewId());
-        textViewDisease.setLayoutParams((ConstraintLayout.LayoutParams) binding.textViewDisease.getLayoutParams());
-        textViewDisease.setText("Hastalık: " + "Kuduz");
-        textViewDisease.setTextSize(14);
-        textViewDisease.setTextColor(Color.BLACK);
-        textViewDisease.setAlpha(0f);
+        TextView textViewDisease = createTextView("", 14, Color.BLACK, 0f);
         newConstraintLayout.addView(textViewDisease);
 
-        // Dinamik olarak bugünün tarihini al
-        String currentDate = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
-        TextView textViewDate = new TextView(context);
-        textViewDate.setId(View.generateViewId());
-        textViewDate.setLayoutParams((ConstraintLayout.LayoutParams) binding.textViewDate.getLayoutParams());
-        textViewDate.setText("Tarih: " + currentDate);
-        textViewDate.setTextSize(12);
-        textViewDate.setTextColor(Color.BLACK);
-        textViewDate.setAlpha(0f);
+        TextView textViewDate = createTextView("", 12, Color.BLACK, 0f);
         newConstraintLayout.addView(textViewDate);
 
-        // ViewModel'e verileri set et
-        sharedViewModel.setPlantName(textViewPlant.getText().toString());
-        sharedViewModel.setDisease(textViewDisease.getText().toString());
-        sharedViewModel.setDate(textViewDate.getText().toString());
+        sharedViewModel.getPlantName().observe(lifecycleOwner, plantName -> {
+            textViewPlant.setText("Plant Name: " + plantName);
+        });
+
+        sharedViewModel.getDisease().observe(lifecycleOwner, disease -> {
+            textViewDisease.setText("Plant Disease: " + disease);
+        });
+
+        sharedViewModel.getDate().observe(lifecycleOwner, date -> {
+            textViewDate.setText(date);
+        });
+
+        setupLayoutConstraints(newConstraintLayout, imageView, textViewPlant, textViewDisease, textViewDate);
 
 
+        animateTextView(textViewPlant);
+        animateTextView(textViewDisease);
+        animateTextView(textViewDate);
 
-        // ConstraintSet ile layout'u düzenleme
+
+        newConstraintLayout.setOnClickListener(view -> navigateToFragment(view, imageUri, textViewPlant, textViewDisease, textViewDate));
+        mainLayout.addView(newConstraintLayout);
+    }
+
+
+    private TextView createTextView(String text, int textSize, int textColor, float alpha) {
+        TextView textView = new TextView(context);
+        textView.setId(View.generateViewId());
+        textView.setText(text);
+        textView.setTextSize(textSize);
+        textView.setTextColor(textColor);
+        textView.setAlpha(alpha);
+        return textView;
+    }
+
+
+    private ImageView createImageView(Uri imageUri) {
+        ImageView imageView = new ImageView(context);
+        imageView.setId(View.generateViewId());
+        imageView.setImageURI(imageUri);
+        imageView.setTag(imageUri);
+        return imageView;
+    }
+
+    private void setupLayoutConstraints(ConstraintLayout newLayout, ImageView imageView, TextView textViewPlant, TextView textViewDisease, TextView textViewDate) {
         ConstraintSet set = new ConstraintSet();
-        set.clone(newConstraintLayout);
+        set.clone(newLayout);
 
-        // ImageView'ı ortalamak ve biraz aşağı taşımak
-        set.connect(imageView.getId(), ConstraintSet.START, newConstraintLayout.getId(), ConstraintSet.START);
-        set.connect(imageView.getId(), ConstraintSet.END, newConstraintLayout.getId(), ConstraintSet.END);
-        set.connect(imageView.getId(), ConstraintSet.TOP, newConstraintLayout.getId(), ConstraintSet.TOP);
-        set.setVerticalBias(imageView.getId(), 0.4f); // Daha aşağı almak için bias ayarla
 
-        // TextView'ları konumlandırma
+        set.connect(imageView.getId(), ConstraintSet.START, newLayout.getId(), ConstraintSet.START);
+        set.connect(imageView.getId(), ConstraintSet.TOP, newLayout.getId(), ConstraintSet.TOP);
+        set.setVerticalBias(imageView.getId(), 0.6f);
+
+
         set.connect(textViewPlant.getId(), ConstraintSet.START, imageView.getId(), ConstraintSet.END);
         set.connect(textViewPlant.getId(), ConstraintSet.TOP, imageView.getId(), ConstraintSet.TOP);
+        set.setMargin(textViewPlant.getId(), ConstraintSet.START, 15);
 
         set.connect(textViewDisease.getId(), ConstraintSet.START, textViewPlant.getId(), ConstraintSet.START);
         set.connect(textViewDisease.getId(), ConstraintSet.TOP, textViewPlant.getId(), ConstraintSet.BOTTOM);
+        set.setMargin(textViewDisease.getId(), ConstraintSet.TOP, 15);
 
         set.connect(textViewDate.getId(), ConstraintSet.START, textViewDisease.getId(), ConstraintSet.START);
         set.connect(textViewDate.getId(), ConstraintSet.TOP, textViewDisease.getId(), ConstraintSet.BOTTOM);
+        set.setMargin(textViewDate.getId(), ConstraintSet.TOP, 20);
 
-        set.applyTo(newConstraintLayout);
-        mainLayout.addView(newConstraintLayout);
-        newConstraintLayout.setVisibility(View.VISIBLE);
-
-        // Animasyonlar
-        ObjectAnimator fadeInAnimPlant = ObjectAnimator.ofFloat(textViewPlant, "alpha", 0f, 1f);
-        fadeInAnimPlant.setDuration(1000);
-        fadeInAnimPlant.start();
-
-        ObjectAnimator fadeInAnimDisease = ObjectAnimator.ofFloat(textViewDisease, "alpha", 0f, 1f);
-        fadeInAnimDisease.setDuration(1000);
-        fadeInAnimDisease.start();
-
-        ObjectAnimator fadeInAnimDate = ObjectAnimator.ofFloat(textViewDate, "alpha", 0f, 1f);
-        fadeInAnimDate.setDuration(1000);
-        fadeInAnimDate.start();
-
-        // Yeni ConstraintLayout tıklandığında navigasyona geç
-        newConstraintLayout.setOnClickListener(view -> navigateToFragment(view,retrievedImageUri));
+        set.applyTo(newLayout);
     }
 
 
-    private void navigateToFragment(View view,Uri retrievedImageUri) {
+
+    private void animateTextView(TextView textView) {
+        ObjectAnimator fadeInAnim = ObjectAnimator.ofFloat(textView, "alpha", 0f, 1f);
+        fadeInAnim.setDuration(1000);
+        fadeInAnim.start();
+    }
+
+
+    private void navigateToFragment(View view, Uri imageUri, TextView textViewPlant, TextView textViewDisease, TextView textViewDate) {
         Bundle bundle = new Bundle();
-        bundle.putString("imageUri", retrievedImageUri.toString()); // URI'yi string olarak gönder
-        NavController navController = Navigation.findNavController(view);
-        navController.navigate(R.id.HistoryDetail,bundle);
-    }
+        bundle.putString("imageUri", imageUri.toString());
+        bundle.putString("plantName", textViewPlant.getText().toString());
+        bundle.putString("disease", textViewDisease.getText().toString());
+        bundle.putString("date", textViewDate.getText().toString());
 
+        NavController navController = Navigation.findNavController(view);
+        navController.navigate(R.id.HistoryDetail, bundle);
+    }
 
 }

@@ -28,7 +28,7 @@ public class HistoryFragment extends Fragment {
         sharedViewModel = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
 
 
-        HistoryHelper historyHelper = new HistoryHelper(requireContext(), binding, sharedViewModel);
+        HistoryHelper historyHelper = new HistoryHelper(requireContext(), binding, sharedViewModel,getViewLifecycleOwner());
 
         sharedViewModel.getImageUriList().observe(getViewLifecycleOwner(), uriList -> {
             historyHelper.updateUIWithImages(uriList); // Static çağrı yerine nesne kullanılıyor

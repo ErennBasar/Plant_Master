@@ -4,10 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F1F8E9"
+    android:background="@drawable/gradient_btn"
     android:gravity="top|center_horizontal"
     android:orientation="vertical"
     android:padding="16dp">
+
+    <ImageButton
+        android:id="@+id/buttonBack"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_gravity="start"
+        android:background="@null"
+        android:contentDescription="Geri butonu"
+        android:src="@drawable/left_arrow_back"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="0dp"
+        android:scaleType="centerInside"
+        android:clickable="true"
+        android:focusable="true" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="320dp"
@@ -20,19 +34,18 @@
 
 
         <ImageView
-            android:id="@+id/imageViewHistory"
+            android:id="@+id/imageViewResult"
             android:layout_width="200dp"
             android:layout_height="200dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:src="@drawable/ic_launcher_foreground"
             android:contentDescription="ImageView description"
             android:layout_marginTop="16dp" />
 
 
         <TextView
-            android:id="@+id/textViewPlant"
+            android:id="@+id/textViewPlantResult"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
@@ -40,43 +53,43 @@
             android:textColor="#000000"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/imageViewHistory"
+            app:layout_constraintTop_toBottomOf="@id/imageViewResult"
             android:layout_marginTop="16dp" />
 
 
         <TextView
-            android:id="@+id/textViewDisease"
+            android:id="@+id/textViewDiseaseResult"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18sp"
             android:textColor="#000000"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textViewPlant"
+            app:layout_constraintTop_toBottomOf="@id/textViewPlantResult"
             android:layout_marginTop="12dp" />
 
 
         <TextView
-            android:id="@+id/textViewTreatment"
+            android:id="@+id/textViewTreatmentResult"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18sp"
             android:textColor="#000000"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textViewDisease"
+            app:layout_constraintTop_toBottomOf="@id/textViewDiseaseResult"
             android:layout_marginTop="12dp" />
 
 
         <TextView
-            android:id="@+id/textViewDate"
+            android:id="@+id/textViewDateResult"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18sp"
             android:textColor="#000000"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textViewTreatment"
+            app:layout_constraintTop_toBottomOf="@id/textViewTreatmentResult"
             android:layout_marginTop="12dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

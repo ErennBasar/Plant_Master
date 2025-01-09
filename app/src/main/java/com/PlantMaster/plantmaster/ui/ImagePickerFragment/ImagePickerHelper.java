@@ -4,12 +4,17 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
+import com.PlantMaster.plantmaster.R;
 import com.github.dhaval2404.imagepicker.ImagePicker;
 
 public class ImagePickerHelper {
@@ -30,6 +35,7 @@ public class ImagePickerHelper {
                             Uri uri = data.getData();
                             if (uri != null) {
                                 this.listener.onImagePicked(uri); // Görüntüyü dinleyiciye gönder
+                                navigateToFragment(fragment.getView());;
                             }
                         }
                     } else if (result.getResultCode() == ImagePicker.RESULT_ERROR) {
@@ -64,6 +70,11 @@ public class ImagePickerHelper {
                     return null;
                 });
     }
+    private void navigateToFragment(View view) {
+        NavController navController = Navigation.findNavController(view);
+        navController.navigate(R.id.ImageResult);
+    }
+
     // Dinleyici arayüzü
     public interface OnImagePickedListener {
         void onImagePicked(Uri imageUri); // Fotoğraf seçildiğinde bu metod çağrılır

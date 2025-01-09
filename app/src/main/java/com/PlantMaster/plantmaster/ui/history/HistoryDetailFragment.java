@@ -21,8 +21,8 @@ public class HistoryDetailFragment extends Fragment {
     private TextView textViewPlant;
     private TextView textViewDisease;
     private TextView textViewDate;
+    private TextView textViewTreatment;
     private SharedViewModel sharedViewModel;
-
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -32,31 +32,38 @@ public class HistoryDetailFragment extends Fragment {
         textViewDisease = root.findViewById(R.id.textViewDisease);
         textViewDate = root.findViewById(R.id.textViewDate);
         imageViewHistory = root.findViewById(R.id.imageViewHistory);
+        textViewTreatment= root.findViewById(R.id.textViewTreatment);
 
         sharedViewModel = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
 
-
-        sharedViewModel.getPlantName().observe(getViewLifecycleOwner(), plantName -> {
-            textViewPlant.setText(plantName);
-        });
-
-        sharedViewModel.getDisease().observe(getViewLifecycleOwner(), disease -> {
-            textViewDisease.setText(disease);
-        });
-
-        sharedViewModel.getDate().observe(getViewLifecycleOwner(), date -> {
-            textViewDate.setText(date);
+        sharedViewModel.getTreatment().observe(getViewLifecycleOwner(), treatment -> {
+            textViewTreatment.setText("Treatment: " + treatment);
         });
 
         Bundle bundle = getArguments();
         if (bundle != null) {
+            String plantName = bundle.getString("plantName");
+            String disease = bundle.getString("disease");
+            String date = bundle.getString("date");
             String imageUriString = bundle.getString("imageUri");
+
+
+            if (plantName != null) {
+                textViewPlant.setText(plantName);
+            }
+            if (disease != null) {
+                textViewDisease.setText(disease);
+            }
+            if (date != null) {
+                textViewDate.setText(date);
+            }
+
+
             if (imageUriString != null) {
                 Uri imageUri = Uri.parse(imageUriString);
-                imageViewHistory.setImageURI(imageUri); // ImageView'a set etme
+                imageViewHistory.setImageURI(imageUri);
             }
         }
-
 
         return root;
     }

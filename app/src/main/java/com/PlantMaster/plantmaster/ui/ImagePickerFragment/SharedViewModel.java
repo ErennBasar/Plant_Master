@@ -16,6 +16,8 @@ public class SharedViewModel extends ViewModel {
     private final MutableLiveData<String> disease = new MutableLiveData<>();
     private final MutableLiveData<String> date = new MutableLiveData<>();
 
+    private final MutableLiveData<String> treatment = new MutableLiveData<>();
+
     // Setters for single values
     public void setPlantName(String name) {
         plantName.setValue(name);
@@ -27,6 +29,10 @@ public class SharedViewModel extends ViewModel {
 
     public void setDate(String date) {
         this.date.setValue(date);
+    }
+
+    public void setTreatment(String treatment) {
+        this.treatment.setValue(treatment);
     }
 
     public void setImageUri(Uri uri) {
@@ -60,6 +66,9 @@ public class SharedViewModel extends ViewModel {
         return date;
     }
 
+    public LiveData<String> getTreatment() {
+        return treatment;
+    }
     public LiveData<Uri> getImageUri() {
         return imageUri;
     }
