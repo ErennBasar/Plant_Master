@@ -35,7 +35,7 @@ public class ProfileDetailFragment extends Fragment {
             String displayName = mAuth.getCurrentUser().getDisplayName() != null
                     ? mAuth.getCurrentUser().getDisplayName()
                     : "No Display Name";
-            binding.textProfileName.setText("Welcome " + displayName); // DisplayName boşsa varsayılan bir mesaj göster
+            binding.textProfileName.setText("Welcome\n" + displayName); // DisplayName boşsa varsayılan bir mesaj göster
             binding.textEmail.setText(mAuth.getCurrentUser().getEmail());
         }
         else {
