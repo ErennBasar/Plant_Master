@@ -4,6 +4,13 @@ import imgaug.augmenters as iaa
 import numpy as np
 import cv2
 
+def get_image_count(directory):
+    image_extensions = ('.png', '.jpg', '.jpeg')
+    image_count = 0
+    for root, dirs, files in os.walk(directory):
+        image_count += sum(1 for file in files if file.lower().endswith(image_extensions))
+    return image_count
+
 # Canny kenar algılama fonksiyonu
 def canny_augmentation(images, random_state, parents, hooks):
     augmented_images = []
@@ -63,46 +70,57 @@ augmenters = [
     iaa.ContrastNormalization((0.8, 1.2))  # Kontrast normalizasyonu
 ]
 
-
-def augment_images_per_original(directory_path, num_images_to_augment):
-    augment_count_per_image = len(augmenters)
-
-    if not os.path.exists(directory_path):
-        print(f"Dizin bulunamadı: {directory_path}")
-        return
-
-    image_files = [f for f in os.listdir(directory_path) if f.lower().endswith(('png', 'jpg', 'jpeg'))]
+def augment_images(directory, num_images_to_augment):
+    image_files = [f for f in os.listdir(directory) if f.lower().endswith(('png', 'jpg', 'jpeg'))]
 
     if not image_files:
-        print("Dizin içinde görüntü dosyası bulunamadı.")
+        print(f"{directory} dizininde resim bulunamadı.")
         return
 
-    print(f"{len(image_files)} orijinal görüntü bulundu.")
-    total_augmented_images = num_images_to_augment * augment_count_per_image
-    print(f"Toplamda {total_augmented_images} yeni görüntü oluşturulacak.\n")
-
     for i, image_file in enumerate(image_files[:num_images_to_augment]):
-        image_path = os.path.join(directory_path, image_file)
+        image_path = os.path.join(directory, image_file)
         with Image.open(image_path) as img:
-            img = img.convert("RGB")  
+            img = img.convert("RGB")
             img_array = np.array(img)
-
-            print(f"{image_file} üzerinde {augment_count_per_image} augmentasyon işlemi yapılacak...")
 
             for j, augmenter in enumerate(augmenters):
                 augmented_image = augmenter(image=img_array)
                 aug_image = Image.fromarray(augmented_image)
 
                 filename, ext = os.path.splitext(image_file)
-                filename = shorten_filename(f"{filename}_aug_{j + 1}", 255)
-                save_path = os.path.join(directory_path, f"{filename}{ext}")
+                save_path = os.path.join(directory, f"{filename}_aug_{j + 1}{ext}")
                 aug_image.save(save_path)
                 print(f"Kaydedildi: {save_path}")
 
-    print(f"Tüm augmentasyon işlemleri tamamlandı. Her görüntü için {augment_count_per_image} artırma yapıldı.")
+def process_directory(base_directory, desired_total=4000):
+    for root, dirs, files in os.walk(base_directory):
+        for subdir in dirs:
+            subdir_path = os.path.join(root, subdir)
+            total_images = get_image_count(subdir_path)
+            print(f"{subdir_path} dizininde toplam {total_images} resim bulundu.")
 
+            if total_images >= desired_total:
+                print(f"{subdir_path} dizinindeki resim sayısı zaten yeterli.")
+                continue
 
-directory_input = input("Lütfen dizin yolunu girin: ").replace('"', '')
-num_images_input = int(input("Kaç adet görsel üzerinde augmentasyon yapılacak?: "))
+            needed_images = desired_total - total_images
+            augment_per_image = len(augmenters)
+            images_to_augment = int(np.ceil(needed_images / augment_per_image))
 
-augment_images_per_original(directory_input, num_images_input)
+            if images_to_augment * augment_per_image < needed_images:
+                images_to_augment += 1 
+
+            print(f"{subdir_path} dizininde {images_to_augment} orijinal resim augmentasyon için seçilecek.")
+
+            augment_images(subdir_path, images_to_augment)
+
+def main():
+    base_directory = input("Lütfen ana dizin yolunu girin: ").replace('"', '')
+    if not os.path.exists(base_directory):
+        print("Geçerli bir dizin giriniz.")
+        return
+
+    process_directory(base_directory)
+
+if __name__ == "__main__":
+    main()
