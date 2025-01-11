@@ -1,6 +1,5 @@
 import os
 from PIL import Image
-import numpy as np
 
 def get_image_count(directory):
     image_extensions = ('.png', '.jpg', '.jpeg')
@@ -9,26 +8,34 @@ def get_image_count(directory):
         image_count += sum(1 for file in files if file.lower().endswith(image_extensions))
     return image_count
 
-def resize_images(directory, target_size=(224, 224)):
-    image_files = [f for f in os.listdir(directory) if f.lower().endswith(('png', 'jpg', 'jpeg'))]
+def resize_images(input_directory, output_directory, target_size=(224, 224)):
+    image_files = [f for f in os.listdir(input_directory) if f.lower().endswith(('png', 'jpg', 'jpeg'))]
 
     if not image_files:
-        print(f"{directory} dizininde resim bulunamadı.")
+        print(f"{input_directory} dizininde resim bulunamadı.")
         return
 
+    if not os.path.exists(output_directory):
+        os.makedirs(output_directory)
+
     for image_file in image_files:
-        image_path = os.path.join(directory, image_file)
+        image_path = os.path.join(input_directory, image_file)
+        output_path = os.path.join(output_directory, image_file)
+
         try:
             with Image.open(image_path) as img:
                 img = img.convert("RGB")
                 img_resized = img.resize(target_size, Image.Resampling.LANCZOS)
-                img_resized.save(image_path)
-
-                print(f"Kaydedildi: {image_path}")
+                img_resized.save(output_path)
+                print(f"Kaydedildi: {output_path}")
         except Exception as e:
             print(f"Hata: {image_path} - {e}")
 
 def process_directory(base_directory):
+    base_directory_224 = base_directory + "_224" 
+    if not os.path.exists(base_directory_224):
+        os.makedirs(base_directory_224)
+
     for root, dirs, files in os.walk(base_directory):
         for subdir in dirs:
             subdir_path = os.path.join(root, subdir)
@@ -36,12 +43,16 @@ def process_directory(base_directory):
             print(f"{subdir_path} dizininde toplam {total_images} resim bulundu.")
 
             if total_images > 0:
-                resize_images(subdir_path)
+                relative_path = os.path.relpath(subdir_path, base_directory)
+                output_directory = os.path.join(base_directory_224, relative_path)
+                
+                resize_images(subdir_path, output_directory)
             else:
                 print(f"{subdir_path} dizininde resim bulunamadı.")
 
 def main():
     base_directory = input("Lütfen ana dizin yolunu girin: ").replace('"', '')
+    
     if not os.path.exists(base_directory):
         print("Geçerli bir dizin giriniz.")
         return
