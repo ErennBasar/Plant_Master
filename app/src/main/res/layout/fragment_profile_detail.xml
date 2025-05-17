@@ -10,6 +10,8 @@
 
     <!-- Kullanıcı Email -->
 
+
+
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="505dp"
@@ -61,12 +63,26 @@
         app:layout_constraintStart_toStartOf="@+id/text_email"
         app:layout_constraintTop_toBottomOf="@+id/text_email" />
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/logoutButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp"
+        android:text="Log Out"
+        android:background="@drawable/gradient_btn"
+        android:textColor="#ffffff"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="690dp"
         android:layout_height="487dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginBottom="496dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginBottom="468dp"
         android:rotation="-146"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"

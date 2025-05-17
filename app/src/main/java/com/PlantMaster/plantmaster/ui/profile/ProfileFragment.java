@@ -28,6 +28,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class ProfileFragment extends Fragment {
 
@@ -47,6 +48,13 @@ public class ProfileFragment extends Fragment {
         profileViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
 
         mAuth = FirebaseAuth.getInstance();
+
+        // Kullanıcı oturum açmış mı kontrol et
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null) {
+            // Eğer kullanıcı giriş yapmışsa, ProfileDetailFragment'e yönlendir
+            navigateToProfileDetail();
+        }
 
         // Butonlara tıklama olayları bağlandı
         binding.loginButton.setOnClickListener(this::loginClicked);
