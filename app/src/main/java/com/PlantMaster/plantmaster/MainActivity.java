@@ -11,12 +11,17 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+import androidx.navigation.NavOptions;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import com.PlantMaster.plantmaster.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,11 +31,23 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser(); // Kullanıcıyı giriş yapmış mı kontrol et
+
         // Navigation View (BottomNavigationView) referansı
         BottomNavigationView navView = binding.navView;
 
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
 
+            // Kullanıcı giriş yaptıysa profileDetailFragment'e yönlendir
+        if (currentUser != null && savedInstanceState == null) {
+            navController.navigate(R.id.profileDetailFragment,
+                    null,
+                    new NavOptions.Builder()
+                            .setPopUpTo(R.id.FirstFragment, true) // Sadece FirstFragment'i stack'ten sil
+                            .build()
+            );
+        }
         // Destination değiştikçe menüyü göster veya gizle
         navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
 
