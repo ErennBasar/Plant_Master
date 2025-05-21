@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -24,11 +25,11 @@ public class FirstFragment extends Fragment {
 
         Button firstLoginButton = view.findViewById(R.id.firstLoginButton);
         Button signupButton = view.findViewById(R.id.firstsignupButton);
-        Button guestButton = view.findViewById(R.id.guestButton);
+        TextView guestButton = view.findViewById(R.id.guestButton);
 
         firstLoginButton.setOnClickListener(v -> navigateToFragment(view, R.id.navigation_profile));
         signupButton.setOnClickListener(v -> navigateToFragment(view, R.id.SignupFragment));
-        guestButton.setOnClickListener(v -> navigateToFragment(view, R.id.ImagePickerFragment));
+        guestButton.setOnClickListener(v -> navigateToFragment(view, R.id.profileDetailFragment));
 
         return view;
     }

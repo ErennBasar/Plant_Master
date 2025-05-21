@@ -78,10 +78,20 @@
         android:label="Image Picker Fragment"
         tools:layout="@layout/fragment_image_picker"/>
     <fragment
+        android:id="@+id/passwordChangeFragment"
+        android:name="com.PlantMaster.plantmaster.ui.profile.profileEdit.PasswordChangeFragment"
+        android:label="Edit Password"
+        tools:layout="@layout/fragment_password_change" />
+    <fragment
         android:id="@+id/usernameChangeFragment"
         android:name="com.PlantMaster.plantmaster.ui.profile.profileEdit.UsernameChangeFragment"
         android:label="Edit Username"
         tools:layout="@layout/fragment_username_change" />
+    <fragment
+        android:id="@+id/emailChangeFragment"
+        android:name="com.PlantMaster.plantmaster.ui.profile.profileEdit.EmailChangeFragment"
+        android:label="Edit Email"
+        tools:layout="@layout/fragment_email_change" />
     <fragment
         android:id="@+id/ResetPasswordFragment"
         android:name="com.PlantMaster.plantmaster.ui.profile.ResetPasswordFragment"

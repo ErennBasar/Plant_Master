@@ -42,6 +42,7 @@ public class PasswordChangeFragment extends Fragment {
         editPassword = binding.editPassword;
         editPasswordConfirm = binding.editPasswordConfirm;
         savePasswordButton = binding.savePasswordButton;
+        binding.backPasswordChange.setOnClickListener(this::navigateToBack);
 
         savePasswordButton.setOnClickListener(v -> updateUserProfile());
 
@@ -79,5 +80,9 @@ public class PasswordChangeFragment extends Fragment {
             NavController navController = Navigation.findNavController(getView());
             navController.navigate(R.id.navigation_profile);
         }
+    }
+    private void navigateToBack(View view){
+        NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_activity_main);
+        navController.navigate(R.id.ProfileEditFragment);
     }
 }

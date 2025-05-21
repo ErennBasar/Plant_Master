@@ -59,7 +59,7 @@ public class ProfileFragment extends Fragment {
         // Butonlara tıklama olayları bağlandı
         binding.loginButton.setOnClickListener(this::loginClicked);
         binding.forgetPasswordText.setOnClickListener(this::forgetPasswordClicked);
-
+        binding.loginGuestButton.setOnClickListener(this::loginGuestButtonClicked);
 
         String fullText = getString(R.string.login_message);
         SpannableString spannableString = new SpannableString(fullText);
@@ -94,7 +94,10 @@ public class ProfileFragment extends Fragment {
     }
 
 
-
+    private void loginGuestButtonClicked(View view){
+        NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_activity_main);
+        navController.navigate(R.id.profileDetailFragment);
+    }
     public void loginClicked(View view) {
         String email = binding.emailInput.getText().toString();
         String password = binding.passwordInput.getText().toString();

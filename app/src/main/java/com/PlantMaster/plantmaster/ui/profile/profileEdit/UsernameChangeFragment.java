@@ -41,10 +41,16 @@ public class UsernameChangeFragment extends Fragment {
 
         editUsername = binding.editUsername;
         saveUsernameButton = binding.saveUsernameButton;
+        binding.backUsernameChange.setOnClickListener(this::navigateToBack);
 
         saveUsernameButton.setOnClickListener(v -> updateUserProfile());
 
         return root;
+    }
+
+    private void navigateToBack(View view){
+        NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_activity_main);
+        navController.navigate(R.id.ProfileEditFragment);
     }
     private void navigateToFragment() {
         if (getView() != null) {

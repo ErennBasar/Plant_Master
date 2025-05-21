@@ -1,77 +1,158 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center">
+    android:background="@drawable/background_bottom_half_2"
+    tools:context=".ui.profile.profileEdit.ProfileEditFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
-        <EditText
-            android:id="@+id/currentEmailAddress"
-            android:layout_width="wrap_content"
-            android:layout_height="60dp"
-            android:layout_marginTop="104dp"
-            android:background="@drawable/gradient_text_input_border"
-            android:ems="10"
-            android:hint="Current Email"
-            android:inputType="textEmailAddress"
-            android:paddingStart="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/backEmailChange"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="16dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/white"
+        android:contentDescription="Back"
+        android:elevation="6dp"
+        android:src="@drawable/arrow_back_ios_24"
+        app:fabSize="normal"
+        app:iconPadding="10dp"
+        app:iconTint="@color/darkGreen"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@null" />
 
-        <EditText
-            android:id="@+id/editEmailAddress"
-            android:layout_width="wrap_content"
-            android:layout_height="60dp"
-            android:layout_marginTop="24dp"
-            android:background="@drawable/gradient_text_input_border"
-            android:ems="10"
-            android:hint="New Email"
-            android:inputType="textEmailAddress"
-            android:paddingStart="16dp"
-            app:layout_constraintEnd_toEndOf="@+id/currentEmailAddress"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/currentEmailAddress"
-            app:layout_constraintTop_toBottomOf="@+id/currentEmailAddress" />
+    <!-- Kart -->
 
-        <EditText
-            android:id="@+id/currentPassword"
-            android:layout_width="wrap_content"
-            android:layout_height="60dp"
-            android:layout_marginTop="24dp"
-            android:background="@drawable/gradient_text_input_border"
-            android:ems="10"
-            android:hint="Current Password"
-            android:inputType="textEmailAddress"
-            android:paddingStart="16dp"
-            app:layout_constraintEnd_toEndOf="@+id/editEmailAddress"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@+id/editEmailAddress"
-            app:layout_constraintTop_toBottomOf="@+id/editEmailAddress" />
+    <TextView
+        android:id="@+id/changeEmailText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="128dp"
+        android:fontFamily="@font/muli_black"
+        android:text="Changing your email?"
+        android:textColor="@color/darkGreen"
+        android:textSize="31sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/saveEmailButton"
-            android:layout_width="130dp"
+    <TextView
+        android:id="@+id/changeEmailTextInfo"
+        android:layout_width="394dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/muli_black"
+        android:text="Don't worry, It’s easier than watering a plant\nJust make sure you have access to your linked email address.  🌿"
+        android:textColor="@color/lineGray"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/changeEmailText"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/changeEmailText"
+        app:layout_constraintTop_toBottomOf="@+id/changeEmailText" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/myCard"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/changeEmailTextInfo"
+        app:layout_constraintVertical_bias="0.35"
+        app:strokeColor="@color/lineGray"
+        app:strokeWidth="2dp">
+
+        <!-- Kart içi -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:background="@drawable/gradient_btn"
-            android:text="Save Email"
-            android:textColor="@color/white"
-            app:layout_constraintEnd_toEndOf="@+id/currentPassword"
-            app:layout_constraintHorizontal_bias="0.54"
-            app:layout_constraintStart_toStartOf="@+id/currentPassword"
-            app:layout_constraintTop_toBottomOf="@+id/currentPassword" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:padding="16dp">
 
+            <!-- Username input -->
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/currentEmailAddressLayout"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/currentEmailAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Current email"
+                    android:inputType="textPassword" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-</LinearLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/editEmailAddressLayout"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/currentEmailAddressLayout">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editEmailAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="New email"
+                    android:inputType="textPassword" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/currentPasswordLayout"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:endIconMode="password_toggle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/editEmailAddressLayout">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/currentPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Current password"
+                    android:inputType="textPassword" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Save button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/saveEmailButton"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Save email"
+                android:textColor="@color/green_500"
+                app:backgroundTint="#f7f7f7"
+                app:icon="@drawable/ic_home_black_24dp"
+                app:iconPadding="8dp"
+                app:iconTint="@color/green_500"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/currentPasswordLayout" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

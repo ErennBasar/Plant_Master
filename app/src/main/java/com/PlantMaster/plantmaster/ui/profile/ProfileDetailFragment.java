@@ -26,7 +26,7 @@ public class ProfileDetailFragment extends Fragment {
         // ViewBinding kullanarak layout'u bağla
         binding = FragmentProfileDetailBinding.inflate(inflater, container, false);
         binding.profileEditButton.setOnClickListener(this::profileEditButtonClicked);
-        binding.logoutButton.setOnClickListener(this::logoutButtonClicked);
+
         // Kullanıcı bilgilerini Firebase üzerinden al ve göster
 
         // Firebase kullanıcısını al
@@ -46,20 +46,10 @@ public class ProfileDetailFragment extends Fragment {
 
         return binding.getRoot();
     }
-
     private void profileEditButtonClicked(View view) {
         NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_activity_main);
         navController.navigate(R.id.ProfileEditFragment);
     }
-    // Çıkış yap butonu tıklama işlemi
-    private void logoutButtonClicked(View view) {
-        FirebaseAuth.getInstance().signOut(); // Firebase ile oturumu kapat
-
-        // Çıkış yapıldıktan sonra LoginFragment'e yönlendir
-        NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_activity_main);
-        navController.navigate(R.id.navigation_profile); // Giriş ekranına yönlendir
-    }
-
 
     @Override
     public void onDestroyView() {

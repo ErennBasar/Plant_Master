@@ -4,38 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/half_background_image_2"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    >
 
 
     <!-- Kullanıcı Email -->
-
-
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="505dp"
-        android:layout_height="704dp"
-        android:layout_marginTop="360dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/plant_background_galeri" />
 
     <TextView
         android:id="@+id/text_profile_name"
         android:layout_width="300dp"
         android:layout_height="73dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="360dp"
         android:paddingBottom="8dp"
         android:text="User Name"
+        android:textColor="@color/darkGreen"
         android:textSize="25sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.333"
         tools:ignore="MissingConstraints" />
 
     <TextView
@@ -44,48 +33,25 @@
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
         android:text="Email"
+        android:textColor="@color/lineGray"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/text_profile_name"
         app:layout_constraintStart_toStartOf="@+id/text_profile_name"
-        app:layout_constraintTop_toBottomOf="@+id/text_profile_name"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toBottomOf="@+id/text_profile_name" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/profileEditButton"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/gradient_btn"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/regular_btn"
         android:backgroundTint="@null"
         android:text="Edit Profile"
         android:textColor="#ffffff"
         app:layout_constraintEnd_toEndOf="@+id/text_email"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/text_email"
         app:layout_constraintTop_toBottomOf="@+id/text_email" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/logoutButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="12dp"
-        android:text="Log Out"
-        android:background="@drawable/gradient_btn"
-        android:textColor="#ffffff"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="690dp"
-        android:layout_height="487dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginBottom="468dp"
-        android:rotation="-146"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/plant_background_camera" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

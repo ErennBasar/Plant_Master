@@ -9,4 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="pastelGreen">#F1F8E9</color>
     <color name="green_500">#4CAF50</color>
+    <color name="darkGreen">#2E7D32</color>
+    <color name="lineGray">#D6D6D6</color>
+    <color name="darkGreen_2">#0b4c30</color>
 </resources>

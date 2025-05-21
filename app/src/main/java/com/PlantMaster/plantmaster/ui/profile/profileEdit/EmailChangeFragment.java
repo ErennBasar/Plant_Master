@@ -44,8 +44,10 @@ public class EmailChangeFragment extends Fragment {
 
         currentEmailAddress = binding.currentEmailAddress;
         editEmailAddress = binding.editEmailAddress;
-        saveEmailButton = binding.saveEmailButton;
         currentPassword = binding.currentPassword;
+        saveEmailButton = binding.saveEmailButton;
+
+        binding.backEmailChange.setOnClickListener(this::navigateToBack);
 
         saveEmailButton.setOnClickListener(v -> updateUserProfile());
 
@@ -99,5 +101,9 @@ public class EmailChangeFragment extends Fragment {
             NavController navController = Navigation.findNavController(getView());
             navController.navigate(R.id.navigation_profile);
         }
+    }
+    private void navigateToBack(View view){
+        NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_activity_main);
+        navController.navigate(R.id.ProfileEditFragment);
     }
 }
