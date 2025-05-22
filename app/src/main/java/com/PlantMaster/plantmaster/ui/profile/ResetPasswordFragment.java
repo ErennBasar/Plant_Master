@@ -38,6 +38,8 @@ public class ResetPasswordFragment extends Fragment {
 
         mAuth = FirebaseAuth.getInstance();
 
+        binding.backResetPasswordButton.setOnClickListener(this::navigateToBack);
+
         buttonResetPassword.setOnClickListener(v -> {
             String email = editTextEmail.getText().toString().trim();
 
@@ -64,5 +66,9 @@ public class ResetPasswordFragment extends Fragment {
             NavController navController = Navigation.findNavController(getView());
             navController.navigate(R.id.navigation_profile);
         }
+    }
+    private void navigateToBack(View view){
+        NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_activity_main);
+        navController.navigate(R.id.navigation_profile);
     }
 }

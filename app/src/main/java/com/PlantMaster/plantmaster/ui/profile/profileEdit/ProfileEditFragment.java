@@ -17,6 +17,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import com.PlantMaster.plantmaster.R;
+import com.PlantMaster.plantmaster.databinding.FragmentProfileDetailBinding;
 import com.PlantMaster.plantmaster.databinding.FragmentProfileEditBinding;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.EmailAuthProvider;
@@ -28,65 +29,48 @@ import com.PlantMaster.plantmaster.ui.profile.profileEdit.UsernameChangeFragment
 public class ProfileEditFragment extends Fragment {
 
     private NavController navController;
+    private FragmentProfileEditBinding binding;
 
-    @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_profile_edit, container, false);
-
-        // Button tanımlamaları
-        Button changeUsernameButton = view.findViewById(R.id.changeUsername);
-        Button changeEmailButton = view.findViewById(R.id.changeEmail);
-        Button changePasswordButton = view.findViewById(R.id.changePassword);
-
-        // Change Username butonu tıklama olayı
-        changeUsernameButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentManager fragmentManager = getChildFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-                UsernameChangeFragment usernameChangeFragment = new UsernameChangeFragment();
-
-                // FrameLayout içine fragment ekleme
-                fragmentTransaction.replace(R.id.container_fragment, usernameChangeFragment);
-                fragmentTransaction.addToBackStack(null); // Geri tuşu için
-                fragmentTransaction.commit();
-            }
-        });
-        // Change Email butonu tıklama olayı
-        changeEmailButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentManager fragmentManager = getChildFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-                EmailChangeFragment emailChangeFragment = new EmailChangeFragment();
-
-                // FrameLayout içine fragment ekleme
-                fragmentTransaction.replace(R.id.container_fragment, emailChangeFragment);
-                fragmentTransaction.addToBackStack(null); // Geri tuşu için
-                fragmentTransaction.commit();
-            }
-        });
-        // Change Password butonu tıklama olayı
-        changePasswordButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentManager fragmentManager = getChildFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-                PasswordChangeFragment passwordChangeFragment = new PasswordChangeFragment();
-
-                // FrameLayout içine fragment ekleme
-                fragmentTransaction.replace(R.id.container_fragment, passwordChangeFragment);
-                fragmentTransaction.addToBackStack(null); // Geri tuşu için
-                fragmentTransaction.commit();
-            }
-        });
 
 
-        return view;
+        // ViewBinding kullanarak layout'u bağla
+        binding = FragmentProfileEditBinding.inflate(inflater, container, false);
+
+        binding.changeUsername.setOnClickListener(this::changeUsernameButtonClicked);
+        binding.changeEmail.setOnClickListener(this::changeEmailButtonClicked);
+        binding.changePassword.setOnClickListener(this::changePasswordButtonClicked);
+        binding.logoutButton.setOnClickListener(this::logoutButtonClicked);
+        binding.backProfileEditButton.setOnClickListener(this::navigateToBack);
+
+        return binding.getRoot();
+    }
+    // Change Username butonu tıklama olayı
+    private void changeUsernameButtonClicked(View view) {
+        NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_activity_main);
+        navController.navigate(R.id.usernameChangeFragment);
+    }
+    // Change Email butonu tıklama olayı
+    private void changeEmailButtonClicked(View view) {
+        NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_activity_main);
+        navController.navigate(R.id.emailChangeFragment);
     }
 
+    // Change Password butonu tıklama olayı
+    private void changePasswordButtonClicked(View view) {
+        NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_activity_main);
+        navController.navigate(R.id.passwordChangeFragment);
+    }
+    private void logoutButtonClicked(View view) {
+        FirebaseAuth.getInstance().signOut(); // Firebase ile oturumu kapat
+
+        // Çıkış yapıldıktan sonra LoginFragment'e yönlendir
+        NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_activity_main);
+        navController.navigate(R.id.navigation_profile); // Giriş ekranına yönlendir
+    }
+    private void navigateToBack(View view){
+        NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_activity_main);
+        navController.navigate(R.id.profileDetailFragment);
+    }
 }

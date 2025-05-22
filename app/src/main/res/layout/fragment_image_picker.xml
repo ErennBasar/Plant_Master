@@ -4,101 +4,108 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F1F8E9"
+    android:background="@drawable/half_background_image_2"
     android:gravity="center"
     android:orientation="vertical"
     android:padding="16dp">
 
-    <!-- Kamera Butonu ve Arka Plan Görseli -->
+    <!-- CAMERA CARD -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp"
+        app:strokeColor="@color/lineGray"
+        app:strokeWidth="2dp"
+        app:cardBackgroundColor="@color/white">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/CLayoutBtnCameraOpen"
-        android:layout_width="320dp"
-        android:layout_height="166dp"
-        android:background="#FFFFFF">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/CLayoutBtnCameraOpen"
+            android:layout_width="match_parent"
+            android:layout_height="166dp">
 
-        <!-- Kamera Arka Plan Resmi -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="48dp"
+                android:layout_marginTop="53dp"
+                android:layout_marginEnd="48dp"
+                android:layout_marginBottom="54dp"
+                android:text="DIAGNOSE\nWITH\nCamera"
+                android:textAlignment="textStart"
+                android:textAllCaps="true"
+                android:textColor="#608125"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/imgCameraBackground"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <!-- Kamera Butonu -->
+            <ImageView
+                android:id="@+id/imgCameraBackground"
+                android:layout_width="140dp"
+                android:layout_height="160dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="6dp"
+                android:layout_marginBottom="3dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/plant_background_camera"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="48dp"
-            android:layout_marginTop="53dp"
-            android:layout_marginEnd="48dp"
-            android:layout_marginBottom="54dp"
-            android:text="DIAGNOSE\nWITH\nCamera"
-            android:textAlignment="textStart"
-            android:textAllCaps="true"
-            android:textColor="#608125"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/imgCameraBackground"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
 
-        <ImageView
-            android:id="@+id/imgCameraBackground"
-            android:layout_width="140dp"
-            android:layout_height="160dp"
-            android:layout_marginTop="3dp"
-            android:layout_marginEnd="6dp"
-            android:layout_marginBottom="3dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/plant_background_camera"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <!-- GALLERY CARD -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp"
+        app:strokeColor="@color/lineGray"
+        app:strokeWidth="2dp"
+        app:cardBackgroundColor="@color/white">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/CLayoutBtnGalleryOpen"
+            android:layout_width="match_parent"
+            android:layout_height="166dp">
 
-    <!-- Galeri Butonu ve Arka Plan Görseli -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="48dp"
+                android:layout_marginTop="53dp"
+                android:layout_marginEnd="48dp"
+                android:layout_marginBottom="54dp"
+                android:text="DIAGNOSE\nfrom\nGallery"
+                android:textAlignment="textStart"
+                android:textAllCaps="true"
+                android:textColor="#608125"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/imgGalleryBackground"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/CLayoutBtnGalleryOpen"
-        android:layout_width="320dp"
-        android:layout_height="166dp"
-        android:layout_marginTop="16dp"
-        android:background="#FFFFFF">
+            <ImageView
+                android:id="@+id/imgGalleryBackground"
+                android:layout_width="140dp"
+                android:layout_height="160dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="6dp"
+                android:layout_marginBottom="3dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/plant_background_galeri"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <!-- Galeri Arka Plan Resmi -->
-
-        <!-- Galeri Butonu -->
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="48dp"
-            android:layout_marginTop="53dp"
-            android:layout_marginEnd="48dp"
-            android:layout_marginBottom="54dp"
-            android:text="DIAGNOSE\nfrom\nGallery"
-            android:textAlignment="textStart"
-            android:textAllCaps="true"
-            android:textColor="#608125"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/imgGalleryBackground"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/imgGalleryBackground"
-            android:layout_width="140dp"
-            android:layout_height="160dp"
-            android:layout_marginTop="3dp"
-            android:layout_marginEnd="6dp"
-            android:layout_marginBottom="3dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/plant_background_galeri"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
 
 </LinearLayout>

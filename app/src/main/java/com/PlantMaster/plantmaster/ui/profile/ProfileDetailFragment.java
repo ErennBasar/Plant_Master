@@ -46,12 +46,10 @@ public class ProfileDetailFragment extends Fragment {
 
         return binding.getRoot();
     }
-
     private void profileEditButtonClicked(View view) {
         NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_activity_main);
         navController.navigate(R.id.ProfileEditFragment);
     }
-
 
     @Override
     public void onDestroyView() {

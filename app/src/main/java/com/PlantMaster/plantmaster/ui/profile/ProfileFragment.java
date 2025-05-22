@@ -28,6 +28,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class ProfileFragment extends Fragment {
 
@@ -48,10 +49,17 @@ public class ProfileFragment extends Fragment {
 
         mAuth = FirebaseAuth.getInstance();
 
+        // Kullanıcı oturum açmış mı kontrol et
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null) {
+            // Eğer kullanıcı giriş yapmışsa, ProfileDetailFragment'e yönlendir
+            navigateToProfileDetail();
+        }
+
         // Butonlara tıklama olayları bağlandı
         binding.loginButton.setOnClickListener(this::loginClicked);
         binding.forgetPasswordText.setOnClickListener(this::forgetPasswordClicked);
-
+        binding.loginGuestButton.setOnClickListener(this::loginGuestButtonClicked);
 
         String fullText = getString(R.string.login_message);
         SpannableString spannableString = new SpannableString(fullText);
@@ -86,7 +94,10 @@ public class ProfileFragment extends Fragment {
     }
 
 
-
+    private void loginGuestButtonClicked(View view){
+        NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_activity_main);
+        navController.navigate(R.id.profileDetailFragment);
+    }
     public void loginClicked(View view) {
         String email = binding.emailInput.getText().toString();
         String password = binding.passwordInput.getText().toString();
