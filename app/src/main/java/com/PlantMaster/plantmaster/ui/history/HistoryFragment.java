@@ -16,22 +16,18 @@ public class HistoryFragment extends Fragment {
 
     private SharedViewModel sharedViewModel;
     private FragmentHistoryBinding binding;
+    private HistoryHelper historyHelper;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        HistoryViewModel historyViewModel =
-                new ViewModelProvider(this).get(HistoryViewModel.class);
-
         binding = FragmentHistoryBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         sharedViewModel = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
+        historyHelper = new HistoryHelper(requireContext(), binding, sharedViewModel);
 
-
-        HistoryHelper historyHelper = new HistoryHelper(requireContext(), binding, sharedViewModel,getViewLifecycleOwner());
-
-        sharedViewModel.getImageUriList().observe(getViewLifecycleOwner(), uriList -> {
-            historyHelper.updateUIWithImages(uriList); // Static çağrı yerine nesne kullanılıyor
+        sharedViewModel.getHistoryItems().observe(getViewLifecycleOwner(), items -> {
+            historyHelper.updateUI(items);
         });
 
         return root;
@@ -43,4 +39,3 @@ public class HistoryFragment extends Fragment {
         binding = null;
     }
 }
-

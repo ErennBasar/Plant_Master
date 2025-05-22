@@ -8,6 +8,9 @@
     <string name="login_message">
     Don\'t have an account? <font color="purple_500">Sign up</font>.
 </string>
+    <string name="plant_label">Plant: %s</string>
+    <string name="disease_label">Disease: %s</string>
+    <string name="treatment_label">Treatment: %s</string>s
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

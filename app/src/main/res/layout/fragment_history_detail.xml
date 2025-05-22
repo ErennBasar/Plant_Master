@@ -8,6 +8,19 @@
     android:gravity="top|center_horizontal"
     android:orientation="vertical"
     android:padding="16dp">
+    <ImageButton
+        android:id="@+id/buttonBack"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_gravity="start"
+        android:background="@null"
+        android:contentDescription="Geri butonu"
+        android:src="@drawable/left_arrow_back"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="0dp"
+        android:scaleType="centerInside"
+        android:clickable="true"
+        android:focusable="true" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="320dp"

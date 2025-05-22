@@ -12,7 +12,7 @@ android {
 
     defaultConfig {
         applicationId = "com.PlantMaster.plantmaster"
-        minSdk = 23
+        minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -69,6 +69,16 @@ dependencies {
 
     implementation("androidx.navigation:navigation-fragment-ktx:2.6.0")
     implementation("androidx.navigation:navigation-ui-ktx:2.6.0")
+
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("com.squareup.okhttp3:okhttp:4.11.0")
+
+    implementation ("org.json:json:20210307")
+    implementation ("com.github.bumptech.glide:glide:4.12.0")
+
+    implementation ("com.airbnb.android:lottie:6.1.0")
+
 
     implementation("com.github.dhaval2404:imagepicker:2.1")
 
