@@ -34,16 +34,12 @@ public class MainActivity extends AppCompatActivity {
         // Destination değiştikçe menüyü göster veya gizle
         navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
 
-            if (destination.getId() == R.id.AfterCamera || destination.getId() == R.id.navigation_profile ||destination.getId() == R.id.SignupFragment
+            if ( destination.getId() == R.id.navigation_profile ||destination.getId() == R.id.SignupFragment
                     || destination.getId() == R.id.FirstFragment) {
                 navView.setVisibility(View.GONE);
                 getWindow().setBackgroundDrawableResource(android.R.color.white);
 
-            } else if (destination.getId() == R.id.navigation_camera) {
-                navView.setVisibility(View.VISIBLE);
-                getWindow().setBackgroundDrawableResource(android.R.color.black);
             }
-
             else if (destination.getId() == R.id.ImageResult) {
                 navView.setVisibility(View.GONE);
                 getWindow().setBackgroundDrawableResource(R.drawable.gradient_btn);

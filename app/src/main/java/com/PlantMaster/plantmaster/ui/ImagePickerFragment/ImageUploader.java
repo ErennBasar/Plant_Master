@@ -28,7 +28,8 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class ImageUploader {
-    private static final String SERVER_URL = "https://04e4-176-216-168-43.ngrok-free.app/predict";
+
+    private static final String SERVER_URL = "your_ngrok_url/predict";
     private static final OkHttpClient client = new OkHttpClient();
 
     public interface UploadCallback {
