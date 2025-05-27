@@ -30,6 +30,9 @@ public class ImageResultsFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentImageResultsBinding.inflate(inflater, container, false);
+
+        binding.backImageResults.setOnClickListener(this::navigateToBack);
+
         return binding.getRoot();
     }
 
@@ -40,7 +43,7 @@ public class ImageResultsFragment extends Fragment {
         sharedViewModel = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
 
         processArguments();
-        setupUI();
+        //setupUI();
         setupObservers();
     }
 
@@ -63,10 +66,14 @@ public class ImageResultsFragment extends Fragment {
             }
         }
     }
-
-    private void setupUI() {
-        binding.buttonBack.setOnClickListener(v -> navigateBack());
+    private void navigateToBack(View view){
+        NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_activity_main);
+        navController.navigate(R.id.ImagePickerFragment);
     }
+
+    /* private void setupUI() {
+        binding.buttonBack.setOnClickListener(v -> navigateBack());
+    }*/
 
     private void updateUI(String plantName, String diseaseName,double confidence) {
         String treatment = getTreatmentForDisease(plantName, diseaseName);
