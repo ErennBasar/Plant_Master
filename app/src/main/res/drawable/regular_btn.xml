@@ -1,6 +1,6 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
 
-    <solid android:color="@color/darkGreen" /> <!-- Koyu yeşil -->
+    <solid android:color="@color/darkGreen_2" /> <!-- Koyu yeşil -->
     <corners android:radius="52dp"/>
 </shape>

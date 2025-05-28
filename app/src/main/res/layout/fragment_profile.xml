@@ -48,7 +48,7 @@
 
     <!-- Facebook ile Giriş -->
 
-    <androidx.appcompat.widget.AppCompatButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/loginButton"
         android:layout_width="333dp"
         android:layout_height="43dp"

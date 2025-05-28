@@ -39,7 +39,7 @@
         app:layout_constraintStart_toStartOf="@+id/text_profile_name"
         app:layout_constraintTop_toBottomOf="@+id/text_profile_name" />
 
-    <androidx.appcompat.widget.AppCompatButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/profileEditButton"
         android:layout_width="300dp"
         android:layout_height="50dp"

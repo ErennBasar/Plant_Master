@@ -110,7 +110,7 @@
 
     <!-- Submit Button -->
 
-    <androidx.appcompat.widget.AppCompatButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/submit"
         android:layout_width="362dp"
         android:layout_height="47dp"
