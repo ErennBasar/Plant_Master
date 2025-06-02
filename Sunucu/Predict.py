@@ -69,7 +69,7 @@ def predict():
             prob = torch.nn.functional.softmax(output[0], dim=0)
             confidence, predicted_idx = torch.max(prob, 0)
 
-        if confidence < 0.1:
+        if confidence < 0.78:
             return jsonify({
                 "plant": "Unknown",
                 "disease": "Unknown",

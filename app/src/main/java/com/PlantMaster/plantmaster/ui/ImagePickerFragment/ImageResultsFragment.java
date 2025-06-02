@@ -21,6 +21,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
+
+
 public class ImageResultsFragment extends Fragment {
 
     private SharedViewModel sharedViewModel;
@@ -87,7 +94,30 @@ public class ImageResultsFragment extends Fragment {
 
 
         animateTextViews();
-        saveHistoryItem(plantName, diseaseName, currentDate,treatment);
+        saveHistoryItem(plantName, diseaseName, currentDate, treatment);
+
+        // Firestore'a kullanıcıya özel geçmiş kaydet
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+        Map<String, Object> historyItem = new HashMap<>();
+        historyItem.put("plantName", plantName);
+        historyItem.put("disease", diseaseName);
+        historyItem.put("treatment", treatment);
+        historyItem.put("date", currentDate);
+        historyItem.put("imageUri", sharedViewModel.getImageUri().getValue() != null ? sharedViewModel.getImageUri().getValue().toString() : "");
+
+        db.collection("users")
+                .document(uid)
+                .collection("history")
+                .add(historyItem)
+                .addOnSuccessListener(documentReference -> {
+                    // Başarıyla kaydedildi
+                })
+                .addOnFailureListener(e -> {
+                    // Hata oluştu
+                });
+
     }
 
     private String getTreatmentForDisease(String plantName, String diseaseName) {

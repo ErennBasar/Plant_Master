@@ -164,7 +164,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="12dp"
             android:fontFamily="@font/muli"
-            android:text="Or Login With"
+            android:text="Or Register With"
             android:textColor="@color/black"
             android:textSize="11sp"
             android:textStyle="bold" />
