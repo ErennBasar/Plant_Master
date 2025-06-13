@@ -1,5 +1,7 @@
 package com.PlantMaster.plantmaster.ui.ImagePickerFragment;
 
+import com.google.firebase.auth.FirebaseUser;
+
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -82,7 +84,7 @@ public class ImageResultsFragment extends Fragment {
         binding.buttonBack.setOnClickListener(v -> navigateBack());
     }*/
 
-    private void updateUI(String plantName, String diseaseName,double confidence) {
+    private void updateUI(String plantName, String diseaseName, double confidence) {
         String treatment = getTreatmentForDisease(plantName, diseaseName);
         String currentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
 
@@ -92,13 +94,19 @@ public class ImageResultsFragment extends Fragment {
         binding.textViewDateResult.setText("Date: " + currentDate);
         binding.textViewConfidence.setText(String.format(Locale.getDefault(), "Confidence: %.2f%%", confidence * 100));
 
-
         animateTextViews();
         saveHistoryItem(plantName, diseaseName, currentDate, treatment);
 
+        // Kullanıcı giriş yapmış mı kontrol et
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user == null) {
+            // Kullanıcı giriş yapmamışsa firestore'a kayıt yapılmaz
+            return;
+        }
+
         // Firestore'a kullanıcıya özel geçmiş kaydet
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        String uid = user.getUid();
 
         Map<String, Object> historyItem = new HashMap<>();
         historyItem.put("plantName", plantName);
@@ -116,9 +124,8 @@ public class ImageResultsFragment extends Fragment {
                 })
                 .addOnFailureListener(e -> {
                     // Hata oluştu
-                });
-
-    }
+         });
+}
 
     private String getTreatmentForDisease(String plantName, String diseaseName) {
         if (diseaseName == null || plantName == null) return "Consult an agricultural expert";
