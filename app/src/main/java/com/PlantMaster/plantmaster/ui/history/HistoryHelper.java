@@ -54,6 +54,13 @@ public class HistoryHelper {
         );
 
 
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+        );
+        params.setMargins(0, 0, 0, 36);
+        itemLayout.setLayoutParams(params);
+
         ImageView imageView = itemLayout.findViewById(R.id.imageViewHistory);
         TextView tvPlant = itemLayout.findViewById(R.id.tvPlantName);
         TextView tvDisease = itemLayout.findViewById(R.id.tvDisease);
