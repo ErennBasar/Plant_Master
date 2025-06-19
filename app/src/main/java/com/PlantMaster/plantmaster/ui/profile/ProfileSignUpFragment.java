@@ -1,6 +1,7 @@
 package com.PlantMaster.plantmaster.ui.profile;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -89,7 +90,8 @@ public class ProfileSignUpFragment extends Fragment {
                 GoogleSignInAccount account = task.getResult(ApiException.class);
                 firebaseAuthWithGoogle(account.getIdToken());
             } catch (ApiException e) {
-                Toast.makeText(getContext(), "Google sign-in failed", Toast.LENGTH_SHORT).show();
+                Log.e("GoogleSignIn", "signInResult:failed code=" + e.getStatusCode(), e);
+                Toast.makeText(getContext(), "Google sign-in failed: " + e.getStatusCode(), Toast.LENGTH_SHORT).show();
             }
         }
     }

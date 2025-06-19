@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,19 +9,23 @@
     android:gravity="top|center_horizontal"
     android:orientation="vertical"
     android:padding="16dp">
-    <ImageButton
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/buttonBack"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_gravity="start"
-        android:background="@null"
-        android:contentDescription="Geri butonu"
-        android:src="@drawable/left_arrow_back"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="0dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="16dp"
+        android:backgroundTint="@color/white"
+        android:contentDescription="Back"
+        android:elevation="6dp"
+        android:src="@drawable/arrow_back_ios_24"
+        app:fabSize="normal"
+        app:iconPadding="10dp"
+        app:iconTint="@color/darkGreen"
         android:scaleType="centerInside"
         android:clickable="true"
-        android:focusable="true" />
+        android:focusable="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="320dp"
@@ -31,7 +36,10 @@
         app:strokeColor="@color/lineGray"
         app:strokeWidth="2dp"
         android:clickable="true"
-        android:focusable="true">
+        android:focusable="true"
+        app:layout_constraintTop_toBottomOf="@id/buttonBack"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayoutHistory"
@@ -100,4 +108,4 @@
 
     </com.google.android.material.card.MaterialCardView>
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

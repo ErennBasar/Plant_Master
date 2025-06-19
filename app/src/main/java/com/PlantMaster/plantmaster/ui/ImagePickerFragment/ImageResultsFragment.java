@@ -92,7 +92,12 @@ public class ImageResultsFragment extends Fragment {
         binding.textViewDiseaseResult.setText("Disease: " + diseaseName);
         binding.textViewTreatmentResult.setText("Treatment: " + treatment);
         binding.textViewDateResult.setText("Date: " + currentDate);
-        binding.textViewConfidence.setText(String.format(Locale.getDefault(), "Confidence: %.2f%%", confidence * 100));
+        if (confidence*100 < 78){
+            binding.textViewConfidence.setVisibility(View.INVISIBLE);
+        }else{
+            binding.textViewConfidence.setText(String.format(Locale.getDefault(), "Confidence: %.2f%%", confidence * 100));
+        }
+
 
         animateTextViews();
         saveHistoryItem(plantName, diseaseName, currentDate, treatment);

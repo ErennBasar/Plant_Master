@@ -10,12 +10,12 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/emailTextInputLayout"
         style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-        android:layout_width="369dp"
+        android:layout_width="320dp"
         android:layout_height="57dp"
-        android:layout_marginTop="364dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintEnd_toEndOf="@+id/loginText"
+        app:layout_constraintHorizontal_bias="0.61"
+        app:layout_constraintStart_toStartOf="@+id/loginText"
+        app:layout_constraintTop_toBottomOf="@+id/loginText">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/emailInput"
@@ -28,12 +28,12 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/passwordTextInputLayout"
         style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-        android:layout_width="369dp"
+        android:layout_width="320dp"
         android:layout_height="57dp"
         android:layout_marginTop="32dp"
         app:endIconMode="password_toggle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/emailTextInputLayout"
+        app:layout_constraintStart_toStartOf="@+id/emailTextInputLayout"
         app:layout_constraintTop_toBottomOf="@+id/emailTextInputLayout">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -50,7 +50,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/loginButton"
-        android:layout_width="333dp"
+        android:layout_width="300dp"
         android:layout_height="43dp"
         android:layout_marginTop="52dp"
         android:background="@drawable/regular_btn"
@@ -74,23 +74,7 @@
         android:src="@drawable/ic_google_logo"
         app:fabSize="normal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.814"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/linearLayout"
-        app:tint="@null" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/loginWithFacebookButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:backgroundTint="@color/white"
-        android:contentDescription="Facebook ile giriş"
-        android:elevation="6dp"
-        android:src="@drawable/ic_facebook_logo"
-        app:fabSize="normal"
-        app:layout_constraintEnd_toStartOf="@+id/loginWithGoogleButton"
-        app:layout_constraintHorizontal_bias="0.802"
+        app:layout_constraintHorizontal_bias="0.700"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/linearLayout"
         app:tint="@null" />
@@ -106,7 +90,7 @@
         android:src="@drawable/outline_account_circle_24"
         app:fabSize="normal"
         app:layout_constraintEnd_toStartOf="@+id/loginWithGoogleButton"
-        app:layout_constraintHorizontal_bias="0.36"
+        app:layout_constraintHorizontal_bias="0.600"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/linearLayout"
         app:tint="@null" />
@@ -120,7 +104,7 @@
         android:text="@string/login_message"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginWithFacebookButton"
+        app:layout_constraintTop_toBottomOf="@+id/loginWithGoogleButton"
         app:layout_constraintVertical_bias="0.407" />
 
     <TextView
@@ -166,9 +150,9 @@
         android:textColor="@color/black"
         android:textSize="15sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/welcomeText"
         app:layout_constraintHorizontal_bias="0.613"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/welcomeText"
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout

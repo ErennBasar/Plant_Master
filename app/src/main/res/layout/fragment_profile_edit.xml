@@ -98,8 +98,8 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/logoutButton"
                 style="@style/Widget.Material3.Button.OutlinedButton"
-                android:layout_width="347dp"
-                android:layout_height="48dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:gravity="start|center_vertical"
                 android:text="Logout"
@@ -109,9 +109,7 @@
                 app:icon="@drawable/ic_home_black_24dp"
                 app:iconPadding="8dp"
                 app:iconTint="#88FF0000"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/myCard" />
+                />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 

@@ -30,9 +30,9 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/usernameInputLayout"
         style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-        android:layout_width="366dp"
+        android:layout_width="320dp"
         android:layout_height="57dp"
-        android:layout_marginTop="350dp"
+        android:layout_marginTop="270dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
@@ -50,7 +50,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/emailInputLayout"
         style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-        android:layout_width="369dp"
+        android:layout_width="320dp"
         android:layout_height="57dp"
         android:layout_marginTop="12dp"
         app:layout_constraintEnd_toEndOf="@+id/usernameInputLayout"
@@ -70,7 +70,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/passwordInputLayout"
         style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-        android:layout_width="369dp"
+        android:layout_width="320dp"
         android:layout_height="57dp"
         android:layout_marginTop="12dp"
         app:endIconMode="password_toggle"
@@ -91,7 +91,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/passwordInputAgainLayout"
         style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-        android:layout_width="369dp"
+        android:layout_width="320dp"
         android:layout_height="57dp"
         android:layout_marginTop="12dp"
         app:endIconMode="password_toggle"
@@ -112,7 +112,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/submit"
-        android:layout_width="362dp"
+        android:layout_width="300dp"
         android:layout_height="47dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/regular_btn"
@@ -180,33 +180,20 @@
         android:id="@+id/signinWithGoogleButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="96dp"
+        android:layout_marginTop="16dp"
+
         android:backgroundTint="@color/white"
-        android:contentDescription="Facebook ile giriş"
+        android:contentDescription="Google ile giriş"
         android:elevation="6dp"
         android:src="@drawable/ic_google_logo"
         app:fabSize="normal"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintHorizontal_bias="0.5"
         app:tint="@null" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/signinWithFacebookButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="40dp"
-        android:backgroundTint="@color/white"
-        android:contentDescription="Facebook ile giriş"
-        android:elevation="6dp"
-        android:src="@drawable/ic_facebook_logo"
-        app:fabSize="normal"
-        app:layout_constraintEnd_toStartOf="@+id/signinWithGoogleButton"
-        app:layout_constraintHorizontal_bias="0.214"
-        app:layout_constraintStart_toStartOf="@+id/linearLayout"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:tint="@null" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
